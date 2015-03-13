@@ -1,0 +1,126 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH updates #}
+{# This page can use any data from http:localhost:2000/cms/#/form/updates/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this updates's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+{% block main %}
+
+
+<section id="Headlines">  
+  <div class="media">
+    <a class="pull-left" href="#" target="_blank">
+      {% if item.friends_update %}
+      <img class="media-object" src="{{ item.friends_update.image|imageCrop(200)  }}" alt="{{ item.name }}">
+      {% elseif item.tone_contributor_referral %}
+      <img class="media-object" src="{{ item.tone_contributor_referral.image|imageCrop(200)  }}" alt="{{ item.name }}">
+      {% else %}
+      {# Assuming you made a single item content type called "site data" #}
+      <img class="media-object" src="{{ cms.sitedata.image|imageCrop(200)  }}" alt="{{ item.name }}">
+      {% endif %}
+    </a>
+    <div class="media-body">
+      {% if item.story %}
+      <h1><a href="{{ url(item.story) }}" target="_blank">{{ item.update_text }}</a></h1>
+      {% elseif item.spotlight_events %}
+      <h1><a href="{{ url(item.spotlight_events)}}" target="_blank">{{ item.update_text }}</a></h1>
+      {% else %}
+      <h1><a href="{{ item.url }}" target="_blank">{{ item.update_text }}</a></h1>
+      {% endif %}
+    </div>
+  </div>
+  
+    <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
+    
+  </section>
+  
+  
+  <!-- Feature Image or Embedded content -->
+  
+  
+  <!-- Article content, dumped in two floating blocks -->
+  <section class="content" id="storyContent">
+    <article>
+      <p>{{ item.extended|safe }}</p>
+      </article>
+      <article>
+        {% include "templates/partials/social.html" %}
+        {% include "templates/partials/comments.html" %}
+    </article>  
+  </section>
+
+  
+  {% endblock %}
+  
+  
+  {% block contextBar %}
+  
+  <!-- Context Bar - authors, related stories, event lists, etc. -->
+  <section class="gap gap-50">
+    
+    <article class="col-sm-4 col-xs-12">
+      {% for relation in item.authors %}
+      <div class="media">
+        <a class="pull-left" href="{{url(relation)}}">
+          {% if relation.image %}
+          <img class="media-object" src="{{ relation.image|imageSize(100)  }}" alt="{{ relation.name }}">
+          {% else %}
+          {# Assuming you made a single item content type called "site data" #}
+          <img class="media-object" src="{{ cms.sitedata.image|imageSize(100)  }}" alt="{{ relation.name }}">
+          {% endif %}
+        </a>
+        <div class="media-body">
+          <a href="{{url(relation)}}">
+            <h4>{{ relation.name }}</h4>  </a>
+            <p>{{ relation.bio }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </article>
+      
+      <article class="col-sm-4 col-xs-12">
+        {% for relation in item.artists_stories %}
+        <div class="media">
+          <a class="pull-left" href="{{url(relation)}}">
+            <img class="media-object" src="{{ relation.image|imageSize(100) }}" alt="{{ relation.name }}">
+          </a>
+          <div class="media-body">
+            <a href="{{url(relation)}}">
+              <h4>{{ relation.name }}</h4>  </a>
+              <p>{{ relation.bio }}</p>
+            </div>
+          </div>
+          {% endfor %}
+        </article>
+        
+        <article class="col-sm-4 col-xs-12">
+          {% for relation in item.events_related_story %}
+          <div class="media"> 
+            <a class="pull-left" href="{{url(relation)}}">
+              {% if relation.image %}
+              <img class="media-object" src="{{ relation.image|imageSize(100)  }}" alt="{{ relation.name }}">
+              {% elseif relation.artists_event[0] %}
+              <img class="media-object" src="{{ relation.artists_event[0].image|imageSize(100)  }}" alt="{{ relation.name }}">
+              {% else %}
+              {# Assuming you made a single item content type called "site data" #}
+              <img class="media-object" src="{{ cms.sitedata.image|imageSize(100)  }}" alt="{{ relation.name }}">
+              {% endif %}
+            </a>
+            <div class="media-body">
+              <a href="{{url(relation)}}">
+                <h3>{{ relation.name }}</h3>  </a>
+                <p>{{ relation.bio }}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </article>
+        </section>
+        {% endblock %}
+        

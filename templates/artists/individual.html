@@ -1,0 +1,112 @@
+{# ------------------------------------------------------- #}
+{# INDIVIDUAL VIEW FOR EACH artists #}
+{# This page can use any data from http:localhost:2000/cms/#/form/artists/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{# This sets our page <title>. It will append this artists's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+{% block content %}
+  <p><a href="{{ url('artists') }}">View a list of all artists</a></p>
+  <h1>{{ item.name }}</h1>
+  <ul>
+      <li>
+        <strong>Name: </strong>
+        {{ item.name }}
+      </li>
+      <li>
+        <strong>Create Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.create_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Last Updated: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.last_updated|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Publish Date: </strong>
+        {# Format the date. You can use PHP's date function to format as needed. http://php.net/manual/en/function.date.php #}
+        {{ item.publish_date|date('F d Y') }}
+      </li>
+      <li>
+        <strong>Image: </strong>
+        {# You can pull out a lot more information from the image property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <img src="{{ item.image|imageSize(200) }}" />
+      </li>
+      <li>
+        <strong>Bio: </strong>
+        {{ item.bio }}
+      </li>
+      <li>
+        <strong>Extended Bio: </strong>
+        {{ item.extended_bio|safe }}
+      </li>
+      <li>
+        <strong>Embed: </strong>
+        {# Embed.ly content usually comes with more data. Info here: #}{# http://www.webhook.com/docs/widget-template-reference/#embedly #}{{ item.embed.html|safe  }}      </li>
+      <li>
+        <strong>Gallery: </strong>
+        {# You can pull out a lot more information from the gallery property. Info here: #}
+        {# http://www.webhook.com/docs/widget-template-reference/#image #}
+        <ul>
+          {% for image in item.gallery %}
+            <li>
+              {# You can get the raw image url by accessing image.url #}
+              <img src="{{ image|imageSize(200,200) }}">
+              <div>{{ image.caption }}</div>
+            </li>
+          {% endfor%}
+        </ul>
+      </li>
+      <li>
+        <strong>Website: </strong>
+        {{ item.website }}
+      </li>
+      <li>
+        <strong>Twitter: </strong>
+        {{ item.twitter }}
+      </li>
+      <li>
+        <strong>Event: </strong>
+        {# Relations require some special code. More info about relations here: #}
+        {# http://www.webhook.com/docs/template-rules-and-filters/#getitem #}
+        {% for relation in item.event %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+      <li>
+        <strong>Stories: </strong>
+        {# Relations require some special code. More info about relations here: #}
+        {# http://www.webhook.com/docs/template-rules-and-filters/#getitem #}
+        {% for relation in item.stories %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+      <li>
+        <strong>Preview URL: </strong>
+        {{ item.preview_url }}
+      </li>
+      <li>
+        <strong>Slug: </strong>
+        {{ item.slug }}
+      </li>
+      <li>
+        <strong>Updates (Tone Contributor Referral): </strong>
+        {# Relations require some special code. More info about relations here: #}
+        {# http://www.webhook.com/docs/template-rules-and-filters/#getitem #}
+        {% for relation in item.updates_tone_contributor_referral %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+  </ul>
+{% endblock %}

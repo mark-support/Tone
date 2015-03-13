@@ -1,0 +1,537 @@
+/* FONTS  */
+@font-face {
+    font-family: FontAwesome;
+    src: url(/static/css/fonts/FontAwesome.otf);
+}
+
+@font-face {
+    font-family: LeagueGothic-Regular;
+    src: url(/static/css/fonts/LeagueGothic-Regular.otf);
+}
+
+@font-face {
+    font-family: RobotoSlab-Bold;
+    src: url(/static/css/fonts/RobotoSlab-Bold.ttf);
+}
+
+@font-face {
+    font-family: RobotoSlab-Light;
+    src: url(/static/css/fonts/RobotoSlab-Light.ttf);
+}
+
+@font-face {
+    font-family: RobotoSlab-Regular;
+    src: url(/static/css/fonts/RobotoSlab-Regular.ttf);
+}
+
+@font-face {
+    font-family: RobotoSlab-Thin;
+    src: url(/static/css/fonts/RobotoSlab-Thin.ttf);
+}
+
+@font-face {
+    font-family: RobotoSlab-Italic;
+    src: url(/static/css/fonts/RobotoSlab-Italic.ttf);
+}
+
+
+
+/* Structural elements */
+html{
+  background: #ffffff;
+  font-family: 'Roboto Slab', serif;
+  font-size: 12px;
+  color: #4A4A4A;
+  margin: 50 auto 50 auto;
+  height:100%;
+
+}
+
+
+body {
+  background: #ffffff;
+  color: #4A4A4A;
+  font-family: 'Roboto Slab', serif;
+  margin: 50 auto 50 auto;
+  font-size: 12px;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  vertical-align: middle;
+  height: 100%;
+}
+
+
+footer{
+  width:100%;
+  height: 180px;
+}
+
+
+#wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow:auto;
+  padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+
+header{
+  font-family: 'LeagueGothic-Regular';
+  font-size: 29px;
+  color: #9F2519;
+  background-color: #ffffff;
+  letter-spacing: 1px;
+  max-width: 1007px;
+  margin: 30 auto 30 auto;
+  padding: 50 0 50 0;
+}
+
+
+section{
+  max-width: 1007px;
+  width:90%;
+  margin: 0 auto 0 auto;
+  height: 100%;
+  margin: auto;
+  padding-bottom: 10px;
+
+}
+
+article{
+  max-width: 980px;
+  margin: auto;
+  align: center;
+  height: 100%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+aside{
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+p{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+a:link, a:visited { 
+    color: #9F2519;
+}
+
+a:link:active, a:visited:active { 
+    color: #9F2519;
+}
+
+/* Used for Webhook WYSIWYG markup */
+
+figure{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: auto;
+}
+
+
+/* used for media objects with photo, title summary. full width. */
+
+summary{
+  width:100%;
+  height: 100%;
+}
+
+
+
+/* Responsive Video Styling */
+
+video {
+  width: 100%    !important;
+  height: auto   !important;
+}
+
+audio {
+  width: 100%    !important;
+  height: auto   !important;
+}
+
+img {
+  height: auto   !important;
+}
+
+
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  +clearfix
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* For content between header and footer */
+
+.content{
+  margin: 0 auto 0 auto;
+  max-width: 1200px;
+}
+
+.SingleLine{
+  vertical-align: baseline;
+}
+
+
+/* Specialized design elements */
+
+#NavBar-Rule{
+  height: 4px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #9F2519;
+  background-color: #F5A623;
+  border-radius: 25px;
+  opacity: 0.5;
+}
+
+.OrangeDrop{
+  height: 100%;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #9F2519;
+  background-color: #F5A623;
+  border-radius: 25px;
+  opacity: 0.5;
+}
+
+.BannerAd{
+  height: 95px;
+  width: 280px;
+  margin: 20px auto 20px auto;
+
+}
+
+.SocialLogos{
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+  margin: 0 1.5%;
+}
+
+.progress{
+  margin: 25px;
+}
+
+.contextBar{
+background: rgba(0,0,0,0.25);
+padding: 50px;
+margin-top: 20px;
+}
+
+.contextBar p {
+font-family: 'RobotoSlab-Regular';
+font-size: 11px;
+color: #232323;
+line-height: 15px;
+}
+
+.dates{
+font-family: 'RobotoSlab-Thin';
+font-size: 10px;
+}
+
+#disqus_thread{
+  height: 100%;
+}
+
+/*Navigation Customization*/
+
+nav {
+  font-family: 'LeagueGothic-Regular';
+  color: #9F2519;
+  font-size: 29px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+
+/* Actual headings */
+
+h1{
+font-family: 'RobotoSlab-Bold';
+font-size: 48px;
+line-height: 48px;
+margin-top: 10px;
+margin-bottom: 15px;
+color: #4A4A4A;
+}
+
+h2{
+font-family: 'RobotoSlab-Bold';
+font-size: 22px;
+color: #4A4A4A;
+line-height: 24px;
+
+}
+
+h3{
+font-family: 'RobotoSlab-Bold';
+font-size: 16px;
+color: #4A4A4A;
+line-height: 16px;
+}
+
+h4{
+font-family: 'RobotoSlab-Bold';
+font-size: 13px;
+color: #4A4A4A;
+line-height: 13px;
+}
+
+h5{
+font-family: 'RobotoSlab-Bold';
+font-size: 14px;
+line-height: 14px;
+color: #4A4A4A;
+}
+
+
+
+/* Responsive headings */
+
+
+/* Extra small devices (phones, less than 768px) */
+
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 767px) {
+h1{
+  font-size: 36px;
+  line-height: 36px;
+}
+h2{
+  font-size: 16.5px;
+  line-height: 18px;
+}
+
+
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+h1{
+  font-size: 28px;
+  line-height: 28px;
+}
+
+h2{
+font-size: 16.5px;
+line-height: 18px;
+
+}
+
+
+}
+
+
+
+
+
+/*Color/attribute shifts*/
+
+.WhiteText{
+  color: #FFFFFF;
+  text-shadow: 3px 3px 5px #4A4A4A;
+}
+
+.WhiteTextFooter{
+  font-family: 'LeagueGothic-Regular';
+  color: #FFFFFF;
+  font-size: 29px;
+  text-align: center;
+  }
+  
+.circleButton {
+    width: 40px;
+    height: 40px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: #FFFFFF;
+    text-align: center;
+  }  
+
+.twitter-button {
+    background: #4099FF;
+  }  
+
+.fb-button {
+    background: #3B5998;
+  }    
+
+.vimeo-button {
+    background: #4EBBFF;
+  }  
+
+.soundcloud-button {
+    background: #FD6312;
+  }
+
+.instagram-button {
+    background: #517FA4;
+  }     
+
+a.btn
+ { 
+    color: #FFFFFF;
+}
+
+
+.blur{
+   -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+
+
+
+
+
+
+/* text elements = */
+.icon{font-size: 14px;}
+
+
+
+/* Subnavigation headers */
+
+.calendarPick{
+font-family: 'RobotoSlab-Regular';
+font-size: 11px;
+color: #232323;
+line-height: 15px;
+}
+
+
+
+/* for mailchimp - might need to style inline... */
+form{
+align: center;
+font-family: 'LeagueGothic-Regular';
+
+}
+
+button, input, select, textarea {
+align: center;
+font-family: 'LeagueGothic-Regular';
+
+}
+
+
+
+
+
+
+/* Skrollr Parallax */
+
+
+.parallax-image-wrapper {
+  position:fixed;
+  left:0;
+  width:100%;
+  overflow:hidden;
+}
+
+.parallax-image-wrapper-50 {
+  height:50%;
+  top:-50%;
+}
+
+.parallax-image-wrapper-100 {
+  height:100%;
+  top:-100%;
+}
+
+.parallax-image {
+  display:none;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:cover;
+}
+
+.parallax-image-50 {
+  height:200%;
+  top:-50%;
+}
+
+.parallax-image-100 {
+  height:100%;
+  top:0;
+}
+
+.parallax-image.skrollable-between {
+  display:block;
+}
+
+.no-skrollr .parallax-image-wrapper {
+  display:none !important;
+}
+
+#skrollr-body {
+  height:100%;
+  overflow:visible;
+  position:relative;
+}
+
+.gap {
+  background:transparent center no-repeat;
+  background-size:cover;
+}
+
+.skrollr .gap {
+  background:transparent !important;
+}
+
+.gap-50 {
+  height:50%;
+}
+
+.gap-100 {
+  height:100%;
+}
+
+.headerScroll, .contentScroll {
+  background:#fff;
+  padding:1em;
+
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+}
+
+.content-full {
+  height:100%;
+}
+
+#done {
+  height:100%;
+}

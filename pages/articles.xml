@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<rss version="2.0">
+  <channel>
+    <title>{{ getSetting('site_name') }}</title>
+    <link>{{ getSetting('site_url') }}</link>
+    <description>{{ getSetting('site_description') }}</description>
+    {% set megaFeed = merge(cms.articles, cms.weekcalendarhighlights) %}
+    
+    {% for object in megaFeed|sort('publish_date', true) %}
+    <item>
+      <title>{{ object.name }}</title>
+      {# Web need Webhook to build a FULL url, not a relative one. #}
+      <link>{{ getSetting('site_url') }}{{ url(object) }}</link>
+      <description>
+        {# The escape filter escapes our HTML so readers can read it. #}
+        {{ object.subhead|safe|escape }}
+      </description>
+      <pubDate>{{ object.publish_date }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>

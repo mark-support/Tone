@@ -1,0 +1,36 @@
+{# ------------------------------------------------------- #}
+
+{# YOUR HOMEPAGE #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - About{% endblock %}
+
+{% block main %}
+
+
+
+
+        <section>
+              <p><h1>Help us make quality local journalism about the arts.</h1></p>
+              <article>
+                <p>{{ cms.sitedata.support|safe }}</p>
+                <a class="btn btn-warning" href="http://www.patreon.com/toneMSN" role="button">Support us on Patreon</a>
+            </article>
+        </section>
+        
+
+
+
+{% endblock %}

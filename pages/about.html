@@ -1,0 +1,67 @@
+{# ------------------------------------------------------- #}
+
+{# YOUR HOMEPAGE #}
+
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+
+{# ------------------------------------------------------- #}
+
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - About{% endblock %}
+
+{% block main %}
+
+
+
+<!-- Feature Image or Embedded content -->
+  
+
+
+<!-- Headline, floating over image -->
+
+        <section>
+              <img class="img-responsive" src="{{cms.sitedata.feature_image|imageSize(1080)}}"></img>
+              <h1 class="" >{{ cms.sitedata.motto }}</h1>
+        </section>
+
+<!-- Article content, dumped in two floating blocks -->
+        <section>
+            <article>
+                <p><h4>{{ cms.sitedata.description|safe }}</h4></p>
+            </article>
+        </section>
+
+        <section>
+            <p></p>
+            <p></p>
+        </section>
+
+<!--Gallery or pullquote, floating underneath -->
+
+        <section class="container-fluid">
+              <p><h3>Site Editors: </h3></p>
+              {% for relation in cms.sitedata.site_editors %}
+                        <article class="col-sm-4 col-xs-12">
+                          <div class="media">
+                            <a class="pull-left" href="{{url(relation)}}">
+                                <img class="media-object" src="{{ relation.image|imageSize(100) }}" alt="{{ relation.name }}">
+                            </a>
+                            <div class="media-body">
+                                <a href="{{url(relation)}}">
+                                <h4>{{ relation.name }}</h4>  </a>
+                                <p>{{ relation.bio }}</p>
+                            </div>
+                          </div>
+                      </article>
+              {% endfor %}
+    
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<rss version="2.0">
+  <channel>
+    <title>{{ getSetting('site_name') }}</title>
+    <link>{{ getSetting('site_url') }}</link>
+    <description>{{ getSetting('site_description') }}</description>
+    
+    {% for object in cms.updates|sort('publish_date', true) %}
+    <item>
+      <title>{{ object.update_text }}</title>
+      {# Web need Webhook to build a FULL url, not a relative one. #}
+      <link>{{ object.url }}</link>
+      <description>
+        {# The escape filter escapes our HTML so readers can read it. #}
+        {{ object.extended|safe|escape }}
+      </description>
+      <pubDate>{{ object.publish_date }}</pubDate>
+    </item>
+    {% endfor %}
+  </channel>
+</rss>
