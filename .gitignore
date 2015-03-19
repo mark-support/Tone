@@ -1,2 +1,7 @@
 
 *.conf
+package.json
+.build/**
+node_modules/**
+options/**
+tasks/**
