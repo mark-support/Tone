@@ -14,7 +14,7 @@
 {# http://www.webhook.com/help/template-inheritance/ #}
 {% extends "templates/partials/base.html" %}
 
-{% block socialsidebar %}    
+{% block socialsidebar %}
 {% endblock %}
 
 
@@ -105,11 +105,13 @@
 
 
 
-        <!-- BANNER AD UNIT 1 served via the Ad content type. FUCKING BROKEN -->
-        <a href="{{cms.advertising.home_left.website}}" target="_blank">
-          <img class="img-responsive BannerAd" src="{{ cms.advertising.home_left.image|imageSize(280) }}" alt="{{cms.advertising.home_left.name}}">
-        </a>
-      <!-- BANNER AD UNIT 1 served via the Ad content type. FUCKING BROKEN -->
+        <!-- BANNER AD UNIT 1 served via the Ad content type. -->
+        <div class="row hidden-xs hidden-sm">
+          <a href="{{cms.advertising.home_left.website}}" target="_blank">
+            <img class="img-responsive BannerAd" src="{{ cms.advertising.home_left.image|imageSize(280) }}" alt="{{cms.advertising.home_left.name}}">
+          </a>
+        </div>
+      <!-- BANNER AD UNIT 1 served via the Ad content type.  -->
 
 
 
@@ -138,7 +140,7 @@
                       <a href="{{ item.url }}" target="_blank">{{ item.update_text }}</a>
                     {% endif %}
                   </div>
-                </div>  
+                </div>
                 {% endfor %}
 
       </section>
@@ -177,11 +179,11 @@
 <section class="col-md-3 clearfix">
 
         <!-- BANNER AD UNIT 2 served via the Ad content type.-->
-
+        <div class="row hidden-xs hidden-sm">
         <a href="{{cms.advertising.home_right.website}}" target="_blank">
           <img class="img-responsive BannerAd" src="{{ cms.advertising.home_right.image|imageSize(280) }}" alt="{{cms.advertising.home_right.name}}">
         </a>
-
+        </div>
 <!-- BANNER AD UNIT 2 served via the Ad content type. -->
 
 

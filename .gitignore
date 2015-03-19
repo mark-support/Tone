@@ -5,3 +5,5 @@ package.json
 node_modules/**
 options/**
 tasks/**
+
+node_modules/wrench/package.json
