@@ -1,0 +1,40 @@
+<aside>
+
+<div class="panel panel-warning">
+<div class="panel-heading dates">sponsor</div>
+
+<div class="panel-body">
+
+<h3>{{cms.advertising.article_mid.text_of_ad}}</h3>
+
+<summary class="ad-contactform">
+<div class="media">
+
+  <div class="media-left media-middle">
+    <a href="{{cms.advertising.article_mid.website}}" target="_blank">
+      <img class="media-object" src="{{cms.advertising.article_mid.image|imageSize(100)}}" alt="{{cms.advertising.article_mid.name}}"></img>
+    </a>
+  </div>
+
+  <div class="media-body">
+      <a href="{{cms.advertising.article_mid.website}}" target="_blank"><h4 class="media-heading"> {{cms.advertising.article_mid.name}} <i class="fa fa-external-link-square"></i></a></h4>
+        <address>
+          {{ cms.advertising.article_mid.address.street1 }}<br/>
+
+          {% if cms.advertising.article_mid.address.street2 %}{{ cms.advertising.article_mid.address.street2 }}{% endif %}
+
+          {{ cms.advertising.article_mid.address.city }}, {{ cms.advertising.article_mid.address.state }} {{ cms.advertising.article_mid.address.country }} {{ cms.advertising.article_mid.address.zip }}<br>
+          {{cms.advertising.article_mid.phone_number}}
+        </address>
+
+</div>
+
+</div>
+</summary>
+
+</div>
+
+
+</div>
+</aside>
+<!-- Article AD MIDDLE served via the Ad content type.  -->

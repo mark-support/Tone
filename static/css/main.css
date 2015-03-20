@@ -121,11 +121,11 @@ p{
 }
 
 
-a:link, a:visited { 
+a:link, a:visited {
     color: #9F2519;
 }
 
-a:link:active, a:visited:active { 
+a:link:active, a:visited:active {
     color: #9F2519;
 }
 
@@ -363,7 +363,7 @@ line-height: 18px;
   font-size: 29px;
   text-align: center;
   }
-  
+
 .circleButton {
     width: 40px;
     height: 40px;
@@ -372,19 +372,19 @@ line-height: 18px;
     border-radius: 50%;
     color: #FFFFFF;
     text-align: center;
-  }  
+  }
 
 .twitter-button {
     background: #4099FF;
-  }  
+  }
 
 .fb-button {
     background: #3B5998;
-  }    
+  }
 
 .vimeo-button {
     background: #4EBBFF;
-  }  
+  }
 
 .soundcloud-button {
     background: #FD6312;
@@ -392,10 +392,10 @@ line-height: 18px;
 
 .instagram-button {
     background: #517FA4;
-  }     
+  }
 
 a.btn
- { 
+ {
     color: #FFFFFF;
 }
 
@@ -534,4 +534,10 @@ font-family: 'LeagueGothic-Regular';
 
 #done {
   height:100%;
+}
+
+.ad-contactform{
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 10px;
 }

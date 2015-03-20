@@ -53,7 +53,7 @@
               {% for item in frontpage|slice(2,2) %}
             <summary class="col-md-12 col-sm-6 col-xs-12">
                 <div class="media">
-                  <a class="pull-left" href="{{ url(item) }}">
+                  <a class="media-left media-middle" href="{{ url(item) }}">
                     {% if item.banner %}
                       <img class="media-object" src="{{ item.banner|imageSize(125) }}" alt="{{ item.name }}">
                     {% else %}
@@ -72,7 +72,7 @@
             {% for item in frontpage|slice(4,2) %}
               <summary class="hidden-lg hidden-md col-sm-6 col-xs-12">
               <div class="media">
-                <a class="pull-left" href="{{ url(item) }}">
+                <a class="media-left media-middle" href="{{ url(item) }}">
                   {% if item.banner %}
                     <img class="media-object" src="{{ item.banner|imageSize(125) }}" alt="{{ item.name }}">
                   {% else %}
@@ -121,7 +121,7 @@
           </a>
                 {% for item in updates|slice(0,8) %}
                 <div class="media">
-                  <a class="pull-left" href="#">
+                  <a class="media-left media-middle" href="#">
                     {% if item.friends_update %}
                       <img class="media-object" src="{{ item.friends_update.image|imageCrop(65)  }}" alt="{{ item.name }}">
                       {% elseif item.tone_contributor_referral %}
@@ -200,7 +200,7 @@
 <!--Loop sets the number of items displayed in feed-->
       {% for item in eventFeed|slice(0, 8)  %}
       <div class="media">
-          <a class="pull-left" href={{ item.website }} target="_blank">
+          <a class="media-left media-middle" href={{ item.website }} target="_blank">
             {% if item.image %}
               <img class="media-object" src="{{ item.image|imageCrop(65)  }}" alt="{{ item.name }}">
             {% elseif item.artists_event[0] %}

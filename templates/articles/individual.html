@@ -12,7 +12,7 @@
 {# This sets our page <title>. It will append this articles's name to the site title defined in base.html #}
 {% block title %}{% parent %} - {{ item.name }}{% endblock %}
 {% block main %}
-  
+
 
   <!--
     We position the images fixed and therefore need to place them outside of #skrollr-body.
@@ -34,8 +34,8 @@
                 {% endfor %}
                 <h1>{{ item.name }}</h1>
                 <h2>{{ item.subhead }}</h2>
-              
-              
+
+
               {%elseif item.audio_file%}
                     <!-- Priority given to Soundcloud episodes -->
                     {% if item.soundcloud %}
@@ -43,20 +43,20 @@
                     {%else%}
                     <audio src={{item.audio_file.url}} controls></audio>
                     {%endif%}
-                    
-                    
+
+
                     <a href="/podcast/">
                     <h3>Arts Extract</h3>
                     </a>
                     <h1>{{ item.name }}</h1>
-                    <h2>{{ item.subhead }}</h2>  
-              
-              
+                    <h2>{{ item.subhead }}</h2>
+
+
               {%else%}
                 <img class="img-responsive" src="{{item.banner|imageSize(1080)}}" alt="{{item.photo_caption}}"></img>
                 <p><em>{{item.photo_caption|safe}}</em></p>
-                
-                
+
+
                 {% for relation in item.tags %}
                 <a href="{{url(relation)}}">
                   <h3 class="">{{relation.name}}</h3>
@@ -65,8 +65,8 @@
                 <h1 class="" >{{ item.name }}</h1>
                 <h2 class="" >{{ item.subhead }}</h2>
               {%endif%}
-              
-              
+
+
               <!--byline-->
               <h5>
               {% for relation in item.authors %}
@@ -74,9 +74,9 @@
                 {% if relation.twitter %}
               ,<a href="https://twitter.com/{{ relation.twitter }}"> @{{ relation.twitter }}</a>
                 {% endif %}
-                <br>  
+                <br>
               {% endfor %}</h5>
-               
+
               <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
 
           </section>
@@ -91,15 +91,28 @@
                   <p>{{ item.body|safe }}</p>
                   <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}
               </article>
+
+
+  <!-- Ad break -->
+
+
+              <article>
+                {% include "templates/partials/article-ad-middle.html" %}
+              </article>
+
+
+
+  <!-- Comments -->
+
               <article>
                 {% include "templates/partials/social.html" %}
                 {% include "templates/partials/comments.html" %}
-              </article>  
+              </article>
           </section>
 
   <!--Gallery or pullquote, floating underneath -->
 
-        
+
 
 
 
@@ -111,7 +124,7 @@
               </blockquote>
           </section>
           {% endif %}
-          
+
 
 {% endblock %}
 
@@ -120,7 +133,7 @@
 
     <!-- Context Bar - authors, related stories, event lists, etc. -->
       <section class="gap gap-50">
-          
+
             <article class="col-sm-4 col-xs-12">
             {% for relation in item.authors %}
                         <div class="media">
@@ -140,7 +153,7 @@
                         </div>
             {% endfor %}
           </article>
-          
+
           <article class="col-sm-4 col-xs-12">
           {% for relation in item.artists_stories %}
                       <div class="media">
@@ -155,10 +168,10 @@
                       </div>
           {% endfor %}
         </article>
-        
+
         <article class="col-sm-4 col-xs-12">
       {% for relation in item.events_related_story %}
-                  <div class="media"> 
+                  <div class="media">
                     <a class="pull-left" href="{{url(relation)}}">
                         {% if relation.image %}
                           <img class="media-object" src="{{ relation.image|imageSize(100)  }}" alt="{{ relation.name }}">
