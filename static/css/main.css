@@ -71,6 +71,7 @@ footer{
   min-height: 100%;
 }
 
+
 #main {
   overflow:auto;
   padding-bottom:150px; /* this needs to be bigger than footer height*/
@@ -550,4 +551,9 @@ font-family: 'LeagueGothic-Regular';
   width: 50%;
   margin: 0 auto;
   padding-top: 10px;
+}
+
+.ad-tiny{
+  font-size:75%;
+
 }

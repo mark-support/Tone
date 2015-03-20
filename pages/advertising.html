@@ -46,12 +46,28 @@
         <a href="{{ url(cms.advertising.home_right) }}">{{ cms.advertising.home_right.name }}</a>
       </li>
       <li>
+        <strong>New Ads: </strong>
+        {{ cms.advertising.new_ads }}
+      </li>
+      <li>
         <strong>Preview URL: </strong>
         {{ cms.advertising.preview_url }}
       </li>
       <li>
         <strong>Slug: </strong>
         {{ cms.advertising.slug }}
+      </li>
+      <li>
+        <strong>Home Top: </strong>
+        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
+        {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+        <a href="{{ url(cms.advertising.home_top) }}">{{ cms.advertising.home_top.name }}</a>
+      </li>
+      <li>
+        <strong>Home Bottom: </strong>
+        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
+        {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+        <a href="{{ url(cms.advertising.home_bottom) }}">{{ cms.advertising.home_bottom.name }}</a>
       </li>
       <li>
         <strong>Article Top: </strong>

@@ -79,12 +79,23 @@
         {% block content %}
         <div class="content">
           <div class="container-fluid row clearfix">
+            <div class="col-md-5 col-sm-12 cleafix">
                     {% block feature %}
                     {% endblock %}
+            <div class="col-md-7 col-sm-12 cleafix">
+          {% block top-ad %}
+              {% endblock %}
+              <div class="container-fluid row clearfix">
                     {% block capitolLoop %}
                     {% endblock  %}
+
                     {% block eventFeed %}
                     {% endblock  %}
+              </div>
+            {% block bottom-ad %}
+              {% endblock %}
+            </div>
+
 
           </div>
         </div>
@@ -102,7 +113,6 @@
 
                   {% block announcements %}
                   {% endblock %}
-
                   {% block contextBar %}
                   {% endblock %}
         </div>
