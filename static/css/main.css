@@ -541,6 +541,11 @@ font-family: 'LeagueGothic-Regular';
   text-align:center;
 }
 
+.ad-image{
+  margin: 0 auto;
+  text-align:center;
+}
+
 .ad-contactform{
   width: 50%;
   margin: 0 auto;
