@@ -536,6 +536,11 @@ font-family: 'LeagueGothic-Regular';
   height:100%;
 }
 
+
+.ad{
+  text-align:center;
+}
+
 .ad-contactform{
   width: 50%;
   margin: 0 auto;
