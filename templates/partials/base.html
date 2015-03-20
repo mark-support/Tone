@@ -32,8 +32,8 @@
     <!--sets Facebook share image-->
     <meta property="og:image" content="{{item.banner|imageSize(1080)}}"/>
     <meta property="og:image:secure_url" content="{{item.banner|imageSize(1080)}}" />
-    
-    
+
+
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon icon-precomposed" href="/static/images/apple-touch-icon.png"/>
     <link href='//fonts.googleapis.com/css?family=Oswald:700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
@@ -56,14 +56,14 @@
     <!-- endbuild -->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
-    
-    {% block socialsidebar %}    
+
+    {% block socialsidebar %}
     <!-- social sidebar -->
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54acd1df11d03f16" async="async"></script>
     {% endblock %}
-    
-    
+
+
     {# Useful block for loading outside scripts in other pages. #}
     {% block head_extra %}{% endblock %}
   </head>
@@ -98,7 +98,7 @@
                   {% block paginate %}
                   {% endblock  %}
         </div>
-        <div class="container-fluid row contextBar">
+        <div class="container-fluid row"> <!--this needs to float at the bottom, currently rides high on the page for no reason.--> 
 
                   {% block announcements %}
                   {% endblock %}
