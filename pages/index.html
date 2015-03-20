@@ -25,7 +25,6 @@
 {% block feature %}
 
 <!--Feature Story Feed-->
-<div class="col-md-5 col-sm-12 cleafix">
 {% set articles = cms.articles|sort('publish_date', true)  %}
 
 <!--brings in calendar posts-->
@@ -89,9 +88,8 @@
               </summary>
           {% endfor %}
         </div>
+
 </div>
-
-
 
 {% endblock %}
 
@@ -101,19 +99,7 @@
 
 <!--Update Feed-->
 {% set updates = cms.updates|sort('publish_date', true) %}
-      <section class="col-md-3 col-sm-12 clearfix">
-
-
-
-        <!-- BANNER AD UNIT 1 served via the Ad content type. -->
-        <div class="row hidden-xs hidden-sm">
-          <a href="{{cms.advertising.home_left.website}}" target="_blank">
-            <img class="img-responsive BannerAd" src="{{ cms.advertising.home_left.image|imageSize(280) }}" alt="{{cms.advertising.home_left.name}}">
-          </a>
-        </div>
-      <!-- BANNER AD UNIT 1 served via the Ad content type.  -->
-
-
+      <section class="col-md-6 col-sm-12 clearfix">
 
 
           <a href="/updates/">
@@ -146,27 +132,6 @@
       </section>
 
 
-  <!-- BANNER AD UNIT 1 + 2 merged for phone/tablet screen sizes -->
-  <article class="row hidden-lg hidden-md">
-
-      <div class="col-sm-6 col-xs-12">
-        <a href="{{cms.advertising.home_left.website}}" target="_blank">
-        <img class="img-responsive BannerAd" src="{{ cms.advertising.home_left.image|imageSize(280) }}" alt="{{cms.advertising.home_left.name}}">
-        </a>
-      </div>
-
-      <div class="col-sm-6 col-xs-12">
-        <a href="{{cms.advertising.home_right.website}}" target="_blank">
-        <img class="img-responsive BannerAd" src="{{ cms.advertising.home_right.image|imageSize(280) }}" alt="{{cms.advertising.home_right.name}}">
-        </a>
-      </div>
-
-  </article>
-
-<!-- BANNER AD UNIT 1 + 2 merged for phone/tablet screen sizes -->
-
-
-
 {% endblock %}
 
 
@@ -176,16 +141,7 @@
 
 
 <!--Event Feed-->
-<section class="col-md-3 clearfix">
-
-        <!-- BANNER AD UNIT 2 served via the Ad content type.-->
-        <div class="row hidden-xs hidden-sm">
-        <a href="{{cms.advertising.home_right.website}}" target="_blank">
-          <img class="img-responsive BannerAd" src="{{ cms.advertising.home_right.image|imageSize(280) }}" alt="{{cms.advertising.home_right.name}}">
-        </a>
-        </div>
-<!-- BANNER AD UNIT 2 served via the Ad content type. -->
-
+<section class="col-md-6 col-sm-12 clearfix">
 
 
         <a href="/events/">
@@ -218,13 +174,13 @@
       </div>
       {% endfor %}
 </section>
+
+
 {% endblock %}
 
 {% block announcements %}
-<div class="progress">
-  <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-    Tone is in beta. Please pardon our dust.
-  </div>
+
+
 {% endblock %}
 
 

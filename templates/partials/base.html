@@ -32,8 +32,8 @@
     <!--sets Facebook share image-->
     <meta property="og:image" content="{{item.banner|imageSize(1080)}}"/>
     <meta property="og:image:secure_url" content="{{item.banner|imageSize(1080)}}" />
-    
-    
+
+
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <link rel="apple-touch-icon icon-precomposed" href="/static/images/apple-touch-icon.png"/>
     <link href='//fonts.googleapis.com/css?family=Oswald:700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
@@ -56,14 +56,14 @@
     <!-- endbuild -->
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
-    
-    {% block socialsidebar %}    
+
+    {% block socialsidebar %}
     <!-- social sidebar -->
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-54acd1df11d03f16" async="async"></script>
     {% endblock %}
-    
-    
+
+
     {# Useful block for loading outside scripts in other pages. #}
     {% block head_extra %}{% endblock %}
   </head>
@@ -79,12 +79,31 @@
         {% block content %}
         <div class="content">
           <div class="container-fluid row clearfix">
+            <div class="col-md-5 col-sm-12 cleafix">
                     {% block feature %}
                     {% endblock %}
+            <div class="col-md-7 col-sm-12 cleafix">
+
+              <!-- Ad break -->
+              <article class="container-fluid row">
+              {% include "templates/partials/home-ad-top.html" %}
+              </article>
+
+              <div class="container-fluid row clearfix">
                     {% block capitolLoop %}
                     {% endblock  %}
+
                     {% block eventFeed %}
                     {% endblock  %}
+              </div>
+
+              <!-- Ad break -->
+              <article class="container-fluid row">
+              {% include "templates/partials/home-ad-bottom.html" %}
+              </article>
+
+            </div>
+
 
           </div>
         </div>
@@ -102,7 +121,6 @@
 
                   {% block announcements %}
                   {% endblock %}
-
                   {% block contextBar %}
                   {% endblock %}
         </div>

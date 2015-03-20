@@ -551,3 +551,8 @@ font-family: 'LeagueGothic-Regular';
   margin: 0 auto;
   padding-top: 10px;
 }
+
+.ad-tiny{
+  font-size:75%;
+
+}
