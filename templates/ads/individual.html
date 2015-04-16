@@ -73,28 +73,8 @@
         {{ item.notes }}
       </li>
       <li>
-        <strong>Legacy ads: </strong>
-        {{ item.legacy_ads }}
-      </li>
-      <li>
-        <strong>Advertising (Home Left): </strong>
-        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
-        {% for relation in item.advertising_home_left %}
-          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
-          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
-        {% endfor %}
-      </li>
-      <li>
-        <strong>Advertising (Home Right): </strong>
-        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
-        {% for relation in item.advertising_home_right %}
-          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
-          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
-        {% endfor %}
-      </li>
-      <li>
-        <strong>New Ads: </strong>
-        {{ item.new_ads }}
+        <strong>Ad Placement: </strong>
+        {{ item.ad_placement }}
       </li>
       <li>
         <strong>Advertising (Article Top): </strong>
@@ -116,6 +96,22 @@
         <strong>Advertising (Article Bottom): </strong>
         {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
         {% for relation in item.advertising_article_bottom %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+      <li>
+        <strong>Advertising (Home Top): </strong>
+        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
+        {% for relation in item.advertising_home_top %}
+          {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
+          <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
+        {% endfor %}
+      </li>
+      <li>
+        <strong>Advertising (Home Bottom): </strong>
+        {# Relationship. Note that use the label you set for the relation, not the content-type name. #}
+        {% for relation in item.advertising_home_bottom %}
           {# You can ouput more than just the name. Feel free to output more fields from the CMS. #}
           <a href="{{ url(relation) }}">{{ relation.name }}</a>{% if not loop.last %},{% endif %}
         {% endfor %}
