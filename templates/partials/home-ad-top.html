@@ -1,5 +1,8 @@
 
-<summary>
+
+
+
+
 
 <div class="panel panel-warning">
 <div class="panel-heading dates">sponsor</div>
@@ -10,30 +13,28 @@
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 ad">
 
           <a href="{{cms.advertising.home_top.website}}" target="_blank">
-            <img class="media-object ad-image" src="{{cms.advertising.home_top.image|imageSize(150)}}" alt="{{cms.advertising.home_top.name}}"></img>
+            <img class="media-object ad-image" src="{{cms.advertising.home_top.image|imageSize(100)}}" alt="{{cms.advertising.home_top.name}}"></img>
           </a>
   </div>
-  <div class="col-md-6">
-          <p class="ad"><strong>{{cms.advertising.home_top.text_of_ad}}</strong><br>
-          <a href="{{cms.advertising.home_top.website}}" target="_blank"><strong>{{cms.advertising.home_top.name}}</strong> <i class="fa fa-external-link-square"></i></a><br>
-          <address class="ad">
-            {{ cms.advertising.home_top.address.street1 }}<br/>
-
-            {% if cms.advertising.home_top.address.street2 %}{{ cms.advertising.home_top.address.street2 }}{% endif %}
-
-            {{ cms.advertising.home_top.address.city }} {{ cms.advertising.home_top.address.state }} {{ cms.advertising.home_top.address.country }} {{ cms.advertising.home_top.address.zip }}<br>
-            {{cms.advertising.home_top.phone_number}}
-          </address>
+  <div class="col-md-6 ad">
+          <a href="{{cms.advertising.home_top.website}}" target="_blank"><h2 class="media-heading"> {{cms.advertising.home_top.name}} <i class="fa fa-external-link-square"></i></a></h2>
+          <h2>{{cms.advertising.home_top.text_of_ad}}</h2>
+          <p>{{cms.advertising.home_top.content_of_ad}}</p>
   </div>
 
-</div>
+  <!-- maps currently busted.
+  <div class="col-md-2 ad">
+          {{ cms.advertising.home_top.map_to_business.html|safe }}
+  </div>
+-->
 
 </div>
+</div>
 
 
 
 </div>
-</summary>
+<!-- Article AD TOP served via the Ad content type.  -->

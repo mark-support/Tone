@@ -4,8 +4,6 @@
 
 
 
-<aside>
-
 <div class="panel panel-warning">
 <div class="panel-heading dates">sponsor</div>
 
@@ -15,31 +13,28 @@
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 ad">
 
           <a href="{{cms.advertising.article_mid.website}}" target="_blank">
-            <img class="media-object ad-image" src="{{cms.advertising.article_mid.image|imageSize(150)}}" alt="{{cms.advertising.article_mid.name}}"></img>
+            <img class="media-object ad-image" src="{{cms.advertising.article_mid.image|imageSize(100)}}" alt="{{cms.advertising.article_mid.name}}"></img>
           </a>
   </div>
   <div class="col-md-6 ad">
+          <a href="{{cms.advertising.article_mid.website}}" target="_blank"><h2 class="media-heading"> {{cms.advertising.article_mid.name}} <i class="fa fa-external-link-square"></i></a></h2>
           <h2>{{cms.advertising.article_mid.text_of_ad}}</h2>
-          <a href="{{cms.advertising.article_mid.website}}" target="_blank"><h3 class="media-heading"> {{cms.advertising.article_mid.name}} <i class="fa fa-external-link-square"></i></a></h3>
-          <address>
-            {{ cms.advertising.article_mid.address.street1 }}<br/>
-
-            {% if cms.advertising.article_mid.address.street2 %}{{ cms.advertising.article_mid.address.street2 }}{% endif %}
-
-            {{ cms.advertising.article_mid.address.city }} {{ cms.advertising.article_mid.address.state }} {{ cms.advertising.article_mid.address.country }} {{ cms.advertising.article_mid.address.zip }}<br>
-            {{cms.advertising.article_mid.phone_number}}
-          </address>
+          <p>{{cms.advertising.article_mid.content_of_ad}}</p>
   </div>
 
-</div>
+  <!-- maps currently busted.
+  <div class="col-md-2 ad">
+          {{ cms.advertising.article_mid.map_to_business.html|safe }}
+  </div>
+-->
 
 </div>
+</div>
 
 
 
 </div>
-</aside>
-<!-- Article AD MIDDLE served via the Ad content type.  -->
+<!-- Article AD TOP served via the Ad content type.  -->

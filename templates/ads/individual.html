@@ -45,20 +45,15 @@
         {{ item.text_of_ad }}
       </li>
       <li>
+        <strong>Content of Ad: </strong>
+        {{ item.content_of_ad }}
+      </li>
+      <li>
+        <strong>Map to Business: </strong>
+        {# Embed.ly content usually comes with more data. Info here: #}{# http://www.webhook.com/docs/widget-template-reference/#embedly #}{{ item.map_to_business.html|safe  }}      </li>
+      <li>
         <strong>Website: </strong>
         {{ item.website }}
-      </li>
-      <li>
-        <strong>Phone number: </strong>
-        {{ item.phone_number }}
-      </li>
-      <li>
-        <strong>Address: </strong>
-        <address>
-          {{ item.address.street1 }}<br/>
-          {% if item.address.street2 %}{{ item.address.street2 }}<br/>{% endif %}
-          {{ item.address.city }}, {{ item.address.state }}. {{ item.address.country }} {{ item.address.zip }}
-        </address>
       </li>
       <li>
         <strong>Preview URL: </strong>
@@ -71,6 +66,22 @@
       <li>
         <strong>Notes: </strong>
         {{ item.notes }}
+      </li>
+      <li>
+        <strong>Depreciated.: </strong>
+        {{ item.depreciated }}
+      </li>
+      <li>
+        <strong>Phone number: </strong>
+        {{ item.phone_number }}
+      </li>
+      <li>
+        <strong>Address: </strong>
+        <address>
+          {{ item.address.street1 }}<br/>
+          {% if item.address.street2 %}{{ item.address.street2 }}<br/>{% endif %}
+          {{ item.address.city }}, {{ item.address.state }}. {{ item.address.country }} {{ item.address.zip }}
+        </address>
       </li>
       <li>
         <strong>Ad Placement: </strong>
