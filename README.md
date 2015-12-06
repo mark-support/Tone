@@ -13,5 +13,11 @@ Employs the [Bootstrap CSS framework](http://getbootstrap.com/), as well as the 
 [skrollr.js](https://github.com/Prinzhorn/skrollr)
 [mediaelement.js](https://github.com/johndyer/mediaelement)
 
+### Installation
+1: clone this bad boy: ```git clone https://github.com/MarkOnFire/Tone.git```
 
+2: install some deps: ```npm install```
 
+3: init webhook ```wh init tonemadison```
+
+4: run locally ```wh serve```
