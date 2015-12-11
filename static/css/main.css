@@ -55,6 +55,65 @@ body {
   font-size: 16px;
 }
 
+.full-width-bios-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 40px 0;
+  padding: 20px 0;
+  background-color: #E6E9F0;
+  border-radius: 2px;
+}
+
+.bio-container {
+  display: flex;
+  width: 292px;
+  margin: 0 20px;
+}
+
+.bio-image {
+  width: 75px;
+  height: 75px;
+  border-radius: 40px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bio-image > img {
+  max-width: 102%;
+  min-width: 100%;
+}
+
+.bio-info-container {
+  flex: 1;
+}
+
+.bio-info-heading {
+  background-color: #BCCBDE;
+  padding: 10px 8px 10px 45px;
+  margin-left: -35px;
+  width: 250px;
+  border-radius: 0 6px 1px 0;
+  z-index: 0;
+}
+
+.bio-name {
+  font: 1.2em/100% 'Roboto', sans-serif;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.bio-info-bio {
+  font: 0.8em/120% 'Roboto', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  width: 250px;  
+  padding: 4px 8px 4px 45px;
+  margin-left: -35px;
+}
+
+
 footer{
   width:100%;
   margin-top: 100px;
@@ -86,8 +145,6 @@ footer{
   background-position: left;
   background-repeat: no-repeat;
 }
-
-.site-map {}
 
 .patreon {
   display: flex;
@@ -124,10 +181,6 @@ footer{
   font-weight: 600;
   font-style: italic;
   color: white;
-}
-
-.footer-social-flair > .flair-container {
-  
 }
 
 .flair-list {
@@ -274,7 +327,7 @@ section {
 
 article{
   font: 1.2em/170% 'Roboto' sans-serif;
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -0.2px;
   padding-top: 10px;
   padding-bottom: 10px;

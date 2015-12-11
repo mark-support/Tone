@@ -89,13 +89,27 @@
           <section class="content" id="storyContent">
               <article>
                   {{ item.body|safe }}
-                  <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}
+                  <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}</p>
               </article>
 
 
   <!-- Bios -->
-             {% include "templates/partials/article_writers_bio.html" %}
-
+            {% block contextBar %} 
+              <div class="full-width-bios-row">
+                  <div class="bio-container">
+                    <div class="bio-image">
+                      <img src="https://lh6.ggpht.com/qpC4ulQZhHK32EHZlHDVXkbHvjjmo0aTKL9A7b6OZWPaQ4x7bsZVEK4V4QbKrKSGFeuh_xpeKwjkVizxPNtAB-78rwc=s100" alt="Scott" />
+                      <!--img src="{{relation.image|imageSize(100)}}" alt="{{relation.name}}" /-->
+                    </div> 
+                    <div class="bio-info-container">
+                      <div class="bio-info-heading">
+                        <h3 class="bio-name">Scott Gordon</h3>
+                      </div>
+                      <div class="bio-info-bio">Scott lives on the east side of Madison and writes and edits for Tone Madison.</div>
+                    </div>
+                  </div>
+              </div>
+            {% endblock %}
   <!-- Ad break -->
 
 
@@ -164,6 +178,5 @@
                 </blockquote>
             </section>
           {% endif %}
-
 
 {% endblock %}
