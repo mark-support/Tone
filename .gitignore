@@ -6,6 +6,8 @@ node_modules/**
 options/**
 tasks/**
 
+**.sw*
+
 node_modules/wrench/package.json
 static/javascript/bootstrap.js
 static/javascript/bootstrap.min.js
