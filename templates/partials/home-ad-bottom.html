@@ -1,40 +1,10 @@
-
-
-
-
-
-
-<div class="panel panel-warning">
-<div class="panel-heading dates">sponsor</div>
-
-
-
-<div class="panel-body container-fluid">
-
-
-<div class="row">
-  <div class="col-md-6 ad">
-
-          <a href="{{cms.advertising.home_bottom.website}}" target="_blank">
-            <img class="media-object ad-image" src="{{cms.advertising.home_bottom.image|imageSize(100)}}" alt="{{cms.advertising.home_bottom.name}}"></img>
-          </a>
+<div class="ad-container">
+  <div class="ad-heading">
+    <span class="ad-heading-text">{{cms.advertising.home_bottom.name}}</span>
   </div>
-  <div class="col-md-6 ad">
-          <a href="{{cms.advertising.home_bottom.website}}" target="_blank"><h2 class="media-heading"> {{cms.advertising.home_bottom.name}} <i class="fa fa-external-link-square"></i></a></h2>
-          <h2>{{cms.advertising.home_bottom.text_of_ad}}</h2>
-          <p>{{cms.advertising.home_bottom.content_of_ad}}</p>
+  <div class="ad-body">
+    <div class="ad-image-container" style="background-image: url({{cms.advertising.article_top.image|imageSize(100)}})"></div>
+    <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
+    <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
   </div>
-
-  <!-- maps currently busted.
-  <div class="col-md-2 ad">
-          {{ cms.advertising.home_bottom.map_to_business.html|safe }}
-  </div>
--->
-
 </div>
-</div>
-
-
-
-</div>
-<!-- Article AD TOP served via the Ad content type.  -->

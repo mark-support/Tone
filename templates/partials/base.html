@@ -68,7 +68,7 @@
     {% block head_extra %}{% endblock %}
   </head>
   <body>
-{% block body %}
+    {% block body %}
       <!--[if lt IE 7]>
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
       <![endif]-->
@@ -78,36 +78,35 @@
       {# By default, your inner pages will load into this block. #}
         {% block content %}
         <div class="content">
-          <div class="container-fluid row clearfix">
-            <div class="col-md-5 col-sm-12 cleafix">
-                    {% block feature %}
-                    {% endblock %}
-            <div class="col-md-7 col-sm-12 cleafix">
+          {% block feature %}
+          {% endblock %}
+
           {% block top-ad %}
-              {% endblock %}
-              <div class="container-fluid row clearfix">
-                    {% block capitolLoop %}
-                    {% endblock  %}
+          {% endblock %}
 
-                    {% block eventFeed %}
-                    {% endblock  %}
-              </div>
-            {% block bottom-ad %}
-              {% endblock %}
-            </div>
+          {% block capitolLoop %}
+          {% endblock  %}
 
-
-          </div>
+          {% block eventFeed %}
+          {% endblock  %}
+          
+          {% block bottom-ad %}
+          {% endblock %}
         </div>
 
         <div class="container-fluid row" id="thing-with-videos">
+          {% block main %}
+          <!-- use section tags in pages to define parallax blocks for articles, etc.-->
+          {% endblock %}
 
-                  {% block main %}
-                  <!-- use section tags in pages to define parallax blocks for articles, etc.-->
-
-                  {% endblock %}
-                  {% block paginate %}
-                  {% endblock  %}
+          {% block paginate %}
+          {% endblock  %}
+        </div>
+        <div class="container-fluid row contextBar"> <!--this needs to float at the bottom, currently rides high on the page for no reason.--> 
+          {% block announcements %}
+          {% endblock %}
+          {% block contextBar %}
+          {% endblock %}
         </div>
       </div>
 

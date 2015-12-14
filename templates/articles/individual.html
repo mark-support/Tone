@@ -21,162 +21,162 @@
 
 <!--cut out, skroller stuff needs to be sorted out. -->
 
-
-  <!-- Headline and embedded media. Tests set up with priority for feature media, then podcasts, then regular features-->
-          <section id="Headlines">
-              {% if item.feature_media %}
-              <div class="videoWrapper"> {{item.feature_media.html|safe}}</div>
-                {% for relation in item.tags %}
-                <a href="{{url(relation)}}">
-                <h3>{{relation.name}}</h3>
-                </a>
-                {% endfor %}
-                <h1>{{ item.name }}</h1>
-                <h2>{{ item.subhead }}</h2>
-
-
-              {%elseif item.audio_file%}
-                <!-- Priority given to Soundcloud episodes -->
-                {% if item.soundcloud %}
-                <div class="videoWrapper"> {{item.soundcloud.html|safe}}</div>
-                {%else%}
-                <audio src={{item.audio_file.url}} controls></audio>
-                {%endif%}
-
-
-                <a href="/podcast/">
-                <h3>Arts Extract</h3>
-                </a>
-                <h1>{{ item.name }}</h1>
-                <h2>{{ item.subhead }}</h2>
-
-
-              {%else%}
-                <h1 class="">{{ item.name }}</h1>
-                
-                <!--byline-->
-                {% for relation in item.authors %}
-                  <h5 class="byline-author">
-                    {{ relation.name }}
-                  </h5>
-                  {% if relation.twitter %}
-                    <a href="https://twitter.com/{{ relation.twitter }}" class="byline-link"> @{{ relation.twitter }}</a>
-                  {% endif %}
-                {% endfor %}
-
-                <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
-
-                <img class="img-responsive" src="{{item.banner|imageSize(1080)}}" alt="Event Photo"/>
-
-                <span class="photo-caption">{{item.photo_caption|safe}}</span>
-
-                {% for relation in item.tags %}
-                  <a href="{{url(relation)}}">
-                    <h3 class="">{{relation.name}}</h3>
-                  </a>
-                {% endfor %}
-
-
-                <h2>{{ item.subhead }}</h2>
-              {%endif%}
-
-          </section>
-
+<!-- Headline and embedded media. Tests set up with priority for feature media, then podcasts, then regular features-->
+<div class="article-content-area">
+  <section id="Headlines">
+    {% if item.feature_media %}
+    <div class="videoWrapper"> {{item.feature_media.html|safe}}</div>
+      {% for relation in item.tags %}
+      <a href="{{url(relation)}}">
+      <h3>{{relation.name}}</h3>
+      </a>
+      {% endfor %}
+      <h1>{{ item.name }}</h1>
+      <h2>{{ item.subhead }}</h2>
+  
+  
+    {%elseif item.audio_file%}
+      <!-- Priority given to Soundcloud episodes -->
+      {% if item.soundcloud %}
+      <div class="videoWrapper"> {{item.soundcloud.html|safe}}</div>
+      {%else%}
+      <audio src={{item.audio_file.url}} controls></audio>
+      {%endif%}
+  
+  
+      <a href="/podcast/">
+      <h3>Arts Extract</h3>
+      </a>
+      <h1>{{ item.name }}</h1>
+      <h2>{{ item.subhead }}</h2>
+  
+  
+    {%else%}
+      <h1 class="">{{ item.name }}</h1>
+      
+      <!--byline-->
+      {% for relation in item.authors %}
+        <h5 class="byline-author">
+          {{ relation.name }}
+        </h5>
+        {% if relation.twitter %}
+          <a href="https://twitter.com/{{ relation.twitter }}" class="byline-link"> @{{ relation.twitter }}</a>
+        {% endif %}
+      {% endfor %}
+  
+      <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
+  
+      <img class="img-responsive" src="{{item.banner|imageSize(1080)}}" alt="Event Photo"/>
+  
+      <span class="photo-caption">{{item.photo_caption|safe}}</span>
+  
+      {% for relation in item.tags %}
+        <a href="{{url(relation)}}">
+          <h3 class="relation-type">{{relation.name}}</h3>
+        </a>
+      {% endfor %}
+  
+  
+      <h2>{{ item.subhead }}</h2>
+    {%endif%}
+  
+  </section>
+  
   <!-- Feature Image or Embedded content -->
-
-
+  
+  
   <!-- Article content, dumped in two floating blocks -->
-          <section class="content" id="storyContent">
-              <article>
-                  {{ item.body|safe }}
-                  <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}</p>
-              </article>
-
-
-  <!-- Bios -->
-            {% block contextBar %} 
-              <div class="full-width-bios-row">
-                  <div class="bio-container">
-                    <div class="bio-image">
-                      <img src="https://lh6.ggpht.com/qpC4ulQZhHK32EHZlHDVXkbHvjjmo0aTKL9A7b6OZWPaQ4x7bsZVEK4V4QbKrKSGFeuh_xpeKwjkVizxPNtAB-78rwc=s100" alt="Scott" />
-                      <!--img src="{{relation.image|imageSize(100)}}" alt="{{relation.name}}" /-->
-                    </div> 
-                    <div class="bio-info-container">
-                      <div class="bio-info-heading">
-                        <h3 class="bio-name">Scott Gordon</h3>
-                      </div>
-                      <div class="bio-info-bio">Scott lives on the east side of Madison and writes and edits for Tone Madison.</div>
-                    </div>
-                  </div>
-              </div>
-            {% endblock %}
-  <!-- Ad break -->
-
-
-              <div class="disclaimer">sponsors</div>
-              <div class="ad-row">
-                <div class="ad-container">
-                  <div class="ad-heading">
-                    <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
-                    <span class="ad-image-container">
-                      <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
-                    </span>
-                  </div>
-                  <div class="ad-body">
-                    <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
-                    <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
-                  </div>
-                </div>
-
-                <div class="ad-container">
-                  <div class="ad-heading">
-                    <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
-                    <span class="ad-image-container">
-                      <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
-                    </span>
-                  </div>
-                  <div class="ad-body">
-                    <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
-                    <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
-                  </div>
-                </div>
-
-                <div class="ad-container">
-                  <div class="ad-heading">
-                    <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
-                    <span class="ad-image-container">
-                      <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
-                    </span>
-                  </div>
-                  <div class="ad-body">
-                    <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
-                    <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
-                  </div>
-                </div>
-              </div> 
-
-
-  <!-- Comments -->
-
-              <article>
-                {% include "templates/partials/social.html" %}
-                {% include "templates/partials/comments.html" %}
-              </article>
-          </section>
-
-  <!--Gallery or pullquote, floating underneath -->
-
-
-
-
-
+  <section class="content" id="storyContent">
+    <article>
+      {{ item.body|safe }}
+      <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}</p>
+    </article>
+  
+    <!-- Bios -->
+    {% block contextBar %} 
+      <div class="full-width-bios-row">
+      {% for relation in item.authors %}
+        <div class="bio-container">
+          <div class="bio-image">
+            {% if relation.image %}
+              <img src="{{ relation.image|imageSize(100)  }}" alt="{{ relation.name }}">
+            {% else %}
+              <img src="{{ cms.sitedata.image|imageSize(100)  }}" alt="{{ relation.name }}">
+            {% endif %}
+          </div> 
+          <div class="bio-info-container">
+            <div class="bio-info-heading">
+              <h3 class="bio-name">{{ relation.name }}</h3>
+            </div>
+            <div class="bio-info-bio">{{ relation.bio }}</div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+    {% endblock %}
+    <!-- Ad break -->
+  
+  
+    <div class="disclaimer">sponsors</div>
+    <div class="ad-row">
+      <div class="ad-container">
+        <div class="ad-heading">
+          <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
+          <span class="ad-image-container">
+            <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
+          </span>
+        </div>
+        <div class="ad-body">
+          <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
+          <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
+        </div>
+      </div>
+  
+      <div class="ad-container">
+        <div class="ad-heading">
+          <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
+          <span class="ad-image-container">
+            <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
+          </span>
+        </div>
+        <div class="ad-body">
+          <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
+          <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
+        </div>
+      </div>
+  
+      <div class="ad-container">
+        <div class="ad-heading">
+          <span class="ad-heading-text">{{cms.advertising.article_top.name}}</span>
+          <span class="ad-image-container">
+            <img src="{{cms.advertising.article_top.image|imageSize(100)}}" /> 
+          </span>
+        </div>
+        <div class="ad-body">
+          <div class="body-heading">{{cms.advertising.article_top.text_of_ad}}</div>
+          <div class="body-content">{{cms.advertising.article_top.content_of_ad}}</div>
+        </div>
+      </div>
+    </div> 
+  
+  
+    <!-- Comments -->
+    <article>
+      {% include "templates/partials/social.html" %}
+      {% include "templates/partials/comments.html" %}
+    </article>
+  </section>
+  
+    <!--Gallery or pullquote, floating underneath -->
+  
     <!-- Article content, dumped in two floating blocks -->
-          {% if item.pullquote %}
-            <section class="content" id="MoreStoryContent">
-                <blockquote class="blockquote-reverse">
-                    <h1>{{ item.pullquote|safe }}</h1>
-                </blockquote>
-            </section>
-          {% endif %}
-
-{% endblock %}
+  {% if item.pullquote %}
+    <section class="content" id="MoreStoryContent">
+        <blockquote class="blockquote-reverse">
+            <h1>{{ item.pullquote|safe }}</h1>
+        </blockquote>
+    </section>
+  {% endif %}
+  
+  {% endblock %}
+</div>
