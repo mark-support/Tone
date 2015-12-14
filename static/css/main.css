@@ -1168,4 +1168,51 @@ a:hover {
 }
 
 
+/* Media Queries */
 
+@media only screen 
+  and (max-width: 960px) {
+
+  .header-content {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  .article-content-area {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  .homepage-content-container > .right-rail {
+    display: none;
+  }
+
+  footer {
+    margin-bottom: 45px;
+  }
+
+  .footer-content-container {
+    display: block;
+  }
+
+  .footer-content-container >
+  .footer-col:first-child {
+    display: none;
+  }
+
+  .footer-social-flair {
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .mailing-list {
+    text-align: center;
+  }
+
+}
+
+
+@media only screen 
+  and (max-width: 481px) {
+
+}
