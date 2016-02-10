@@ -57,17 +57,19 @@
     {% endfor %} 
 
     {% for item in frontpage|slice(3,2) %}
-      <div class="article-container-sm">
-        {% if item.banner %}
-          <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div> 
-        {% else %}
-          <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div> 
-        {% endif %}
-        <div class="article-headline-container">
-          <div class="heading">{{item.name}}</div>
-          <div class="body">{{item.subhead}}</div>
+      <a href="{{url(item)}}">
+        <div class="article-container-sm">
+          {% if item.banner %}
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div> 
+          {% else %}
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div> 
+          {% endif %}
+          <div class="article-headline-container">
+            <div class="heading">{{item.name}}</div>
+            <div class="body">{{item.subhead}}</div>
+          </div>
         </div>
-      </div>
+      </a>
     {% endfor %}
 
     {% block bottom-ad %}

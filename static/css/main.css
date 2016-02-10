@@ -55,6 +55,10 @@ body {
   font-size: 16px;
 }
 
+.mobile {
+  display: none;
+}
+
 .article-content-area {
   width: 750px;
   margin: 0 auto;
@@ -66,6 +70,7 @@ body {
 
 .full-width-bios-row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   margin: 40px 0;
@@ -76,16 +81,21 @@ body {
 
 .bio-container {
   display: flex;
+  position: relative;
   width: 292px;
-  margin: 0 20px;
+  margin: 20px;
+  padding: 0 10px;
 }
 
 .bio-image {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 75px;
   height: 75px;
   border-radius: 40px;
   overflow: hidden;
-  z-index: 1;
+  z-index: 10;
 }
 
 .bio-image > img {
@@ -95,6 +105,7 @@ body {
 
 .bio-info-container {
   flex: 1;
+  margin-left: 60px;
 }
 
 .bio-info-heading {
@@ -323,12 +334,98 @@ header{
   letter-spacing: 3px;
 }
 
+.header-content form {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  transition: width 0.3s ease;
+}
+
+.header-content .expanded {
+  width: 180px;
+}
+
+.header-content form input {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;;
+  height: 24px;
+  border-radius: 15px;
+  border: 2px solid #777;
+}
+
+.header-content .expanded input {
+  width: 180px;
+  padding-left: 20px;
+}
+
+.header-content #search-form:focus {
+  outline: 0;
+}
+
+.header-content .magnifying-glass {
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  z-index: 1;
+}
+
 .header-content > a:link, a:visited {
   color: #4A4A4A;
   text-decoration: none;
 }
 
+.dropdown-toggle {
+  background: transparent;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  font-weight: 400; 
+  letter-spacing: 3px;
+}
 
+.dropdown-chev {
+  font-size: 0.9em;
+  margin-left: 3px;
+}
+
+.dropdown-menu {
+  left: -70px;
+  border-radius: 2px;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu .divider {
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu > li > a {
+  padding: 10px 20px;
+  font: 0.9em/100% georgia;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: -0.2px;
+}
+
+/* hover state for dropdown */
+.dropdown-menu > 
+li > 
+a:hover, 
+.dropdown-menu > 
+li > 
+a:focus {
+  background-image: none;
+}
 
 section {
   padding-bottom: 10px;
@@ -534,7 +631,7 @@ color: #4A4A4A;
 }
 
 h2{
-font: 2.369em/100% 'Georgia';
+font: 2.4em/100% 'Georgia';
 color: #4A4A4A;
 line-height: 38px;
 font-weight: 600;
@@ -941,6 +1038,7 @@ font-family: 'LeagueGothic-Regular';
 .article-container-sm {
   margin-top: 55px;
   display: flex;
+  color: #302F2F;
 }
 
 .article-container-sm > .image-container {
@@ -974,7 +1072,7 @@ font-family: 'LeagueGothic-Regular';
 
 .homepage-content-container > .right-rail {
   flex: 0 0 400px;
-  padding: 0 20px;
+  padding: 0 20px 0 35px;;
   margin-top: 20px;
 }
 
@@ -1097,12 +1195,12 @@ a:hover {
   font-weight: 600;
   letter-spacing: -0.2px;
   color: #302F2F;
-  padding: 10px 10px 10px 30px;
+  padding: 10px 10px 10px 15px;
   text-align: center;
 }
 
 .cal-date {
-  padding: 0 10px 10px 30px;
+  padding: 0 10px 10px 15px;
   font: 1em/100% georgia;
   color: #E05038;
   text-align: center;
@@ -1187,6 +1285,12 @@ a:hover {
     display: none;
   }
 
+  .article-container-sm {
+    display: block
+  }
+
+  
+
   footer {
     margin-bottom: 45px;
   }
@@ -1214,5 +1318,96 @@ a:hover {
 
 @media only screen 
   and (max-width: 481px) {
+
+.desktop {
+  display: none;
+}
+
+.mobile {
+  display: block;
+}
+
+.dropdown {
+  text-align: right;
+}
+
+.mobile-nav-button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  background: #E05038;
+  line-height: 13px;
+  text-shadow: none;
+}
+
+.dropdown-menu {
+  left: -110px;
+  min-width: 230px;
+  padding: 10px 0;
+}
+
+.dropdown-menu .divider {
+  margin-top: 10px;
+}
+
+.dropdown-header {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.image-background-overlay {
+  padding: 0 10px 10px 10px;
+}
+
+.bio-image {
+  width: 55px;
+  height: 55px;
+}
+
+.bio-image > img {
+  max-width: 115%;
+}
+
+.full-width-ad-container 
+.ad-body {
+  display: block;
+  height: auto;
+}
+
+.full-width-ad-container 
+.ad-body 
+.ad-image-container {
+  display: inline-block;
+}
+
+.full-width-ad-container 
+.ad-body 
+.body-heading {
+  display: inline-block;
+  width: 230px;
+}
+
+.full-width-ad-container 
+.ad-body 
+.body-content {
+  display: block;
+  padding: 20px;
+}
+
+.ad-row {
+  display: block;
+}
+
+.ad-container {
+  display: block;
+  flex: none;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.ad-container:nth-child(2) {
+  padding: 0;
+}
 
 }
