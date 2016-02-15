@@ -1,0 +1,111 @@
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+
+{% block socialsidebar %}
+{% endblock %}
+
+
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
+
+
+{% block feature %}
+
+<!--Feature Story Feed-->
+{% set articles = cms.articles|sort('publish_date', true)  %}  <!--needs filtering to section tag-->
+<!--brings in calendar posts-->
+{% set highlights = cms.weeklycalendarhighlights|sort('publish_date', true)  %}
+{% set frontpage = merge(articles, highlights) %}
+
+
+<div class="homepage-content-container">
+  <div class="content-area">
+    {% for item in frontpage|slice(0,3) %}
+      <a href="{{ url(item) }}">
+        <div class="article-container-lg">
+          {% if item.banner %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <div class="title-card">{{ item.name }}</div>
+              </div>
+            </div>
+          {% else %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <h2 class="title-card">{{ item.name }}</h2>
+              </div>
+            </div>
+          {% endif %}
+          <a href="{{url(item)}}">
+            <h3 class="subheading">{{ item.subhead }}</h3>
+          </a>
+        </div>
+      </a>
+    {% endfor %}
+
+    {% for item in frontpage|slice(3,2) %}
+      <a href="{{url(item)}}">
+        <div class="article-container-sm">
+          {% if item.banner %}
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div>
+          {% else %}
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div>
+          {% endif %}
+          <div class="article-headline-container">
+            <div class="heading">{{item.name}}</div>
+            <div class="body">{{item.subhead}}</div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+
+    {% block bottom-ad %}
+      <div class="full-width-ad-container">
+        <div class="disclaimer">sponsor</div>
+        {% include "templates/partials/home-ad-bottom.html" %}
+      </div>
+    {% endblock %}
+
+
+
+
+
+  </div>
+
+  {% set updates = cms.updates|sort('publish_date', true) %}
+  <div class="right-rail">
+    {% block eventFeed %}
+      <div class="right-rail-widget">
+        <h4 class="heading">Calendar</h4>
+        {% set eventFeed = cms.events|sort('date_time', false) %} <!--needs filtering to section tag-->
+        <div class="widget-body">
+          {% for item in eventFeed|slice(0, 16) %}
+            <a href="{{item.website}}">
+              <div class="cal-event-container">
+                {% if item.image %}
+                  <div class="cal-image-container" style="background-image: url({{item.image|imageCrop(65)}})"></div>
+                {% elseif item.artists_event[0] %}
+                  <div class="cal-image-container" style="background-image: url({{item.artists_event[0].image|imageCrop(65)}})"></div>
+                {% else %}
+                  <div class="cal-image-container" style="background-image: url({{cms.sitedata.image|imageCrop(65)}})"></div>
+                {% endif %}
+                <div class="cal-content">
+                  <div class="cal-heading">
+                    <h4 class="cal-heading-el">{{item.venue}}</h4>
+                  </div>
+                  <div class="cal-body">
+                    <div class="cal-title">{{item.name}}</div>
+                    <div class="cal-date">{{item.date_time|date('D, M j @ g:i a')}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+</div>
+
+{% endblock %}
