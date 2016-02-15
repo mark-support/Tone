@@ -73,11 +73,9 @@
     {% endfor %}
 
     {% block bottom-ad %}
+    <br>
     <div class="disclaimer">sponsors</div>
-    <div class="ad-row">
       {% include "templates/partials/home-ad-top.html" %}
-      {% include "templates/partials/home-ad-bottom.html" %}  
-    </div>
     {% endblock %}
 
   </div>
@@ -136,6 +134,13 @@
         </div>
       </div>
     {% endblock %}
+    {% block bottom-ad %}
+
+    <br>
+    <div class="disclaimer">sponsors</div>
+      {% include "templates/partials/home-ad-bottom.html" %}
+    {% endblock %}
+
   </div>
 </div>
 
