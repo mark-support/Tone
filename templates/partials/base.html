@@ -89,7 +89,7 @@
 
           {% block eventFeed %}
           {% endblock  %}
-          
+
           {% block bottom-ad %}
           {% endblock %}
         </div>
@@ -102,7 +102,7 @@
           {% block paginate %}
           {% endblock  %}
         </div>
-        <div class="container-fluid row contextBar"> <!--this needs to float at the bottom, currently rides high on the page for no reason.--> 
+        <div class="container-fluid row contextBar"> <!--this needs to float at the bottom, currently rides high on the page for no reason.-->
           {% block announcements %}
           {% endblock %}
           {% block contextBar %}
@@ -146,5 +146,11 @@
       </script>
 
 {% endblock %}
+
+
+  {% block scripts_extra %}
+
+  {% endblock %}
+
   </body>
 </html>

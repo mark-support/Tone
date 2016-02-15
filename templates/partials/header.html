@@ -1,5 +1,5 @@
 <header>
-  <div class="header-content">
+  <div class="header-content" data-search-index="false">
     <a href="/">
       <div class="logo">
         <img src="{{cms.sitedata.feature_image|imageSize(180)}}" alt="Tone Madison" />
@@ -8,10 +8,12 @@
     <nav class="desktop">
       <ul>
         <li>
-          <form class="header-search">
+          <form action="/search-results/" class="header-search search-form" method="get" data-search-index="false">
             <i class="fa fa-search magnifying-glass"></i>
-            <input type="text" id="search-form" />
+            <input type="text" placeholder="search" id="tipue_search_input" name="q">
           </form>
+
+
         </li>
         {% for item in cms.tags|where('name','listen','watch','read', 'events') %}
         <li><a href="{{url(item)}}">{{ item.name }}</a></li>

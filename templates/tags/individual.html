@@ -19,7 +19,7 @@
 {% set frontpage = merge(articles, highlights) %}
 
 
-<div class="homepage-content-container">
+<div class="homepage-content-container" data-search-index="false">
   <div class="content-area">
     {% for item in frontpage|slice(0,3) %}
       <a href="{{ url(item) }}">
