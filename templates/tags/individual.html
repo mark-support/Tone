@@ -1,0 +1,103 @@
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/help/template-inheritance/ #}
+{% extends "templates/partials/base.html" %}
+
+{% block socialsidebar %}
+{% endblock %}
+
+
+{# This sets our page <title>. It will append "- <TAG NAME>" to the site title defined in base. #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
+
+
+{% block feature %}
+
+<!--Feature Story Feed-->
+
+{% set ArticleArchive = item.articles|sort('publish_date', true)  %}
+{% set articles = paginate(ArticleArchive, 20) %}
+
+<div class="homepage-content-container" data-search-index="false">
+  <div class="content-area">
+    {% for item in articles|slice(0,3) %}
+      <a href="{{ url(item) }}">
+        <div class="article-container-lg">
+          {% if item.banner %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <div class="title-card">{{ item.name }}</div>
+              </div>
+            </div>
+          {% else %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <h2 class="title-card">{{ item.name }}</h2>
+              </div>
+            </div>
+          {% endif %}
+          <a href="{{url(item)}}">
+            <h3 class="subheading">{{ item.subhead }}</h3>
+          </a>
+        </div>
+      </a>
+    {% endfor %}
+
+    {% for item in articles|slice(3,2) %}
+      <a href="{{url(item)}}">
+        <div class="article-container-sm">
+          {% if item.banner %}
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div>
+          {% else %}
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div>
+          {% endif %}
+          <div class="article-headline-container">
+            <div class="heading">{{item.name}}</div>
+            <div class="body">{{item.subhead}}</div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+
+    {% include "templates/partials/paginator.html" %}
+
+    {% block bottom-ad %}
+      <div class="full-width-ad-container">
+        <div class="disclaimer">sponsor</div>
+        {% include "templates/partials/home-ad-bottom.html" %}
+      </div>
+    {% endblock %}
+
+
+  </div>
+
+  <div class="right-rail">
+    {% block eventFeed %}
+      <div class="right-rail-widget">
+        <h4 class="heading">Backlog</h4>
+        <div class="widget-body">
+          {% for item in articles|slice(3, 20) %}
+            <a href="{{ url(item) }}">
+              <div class="cal-event-container">
+                {% if item.banner %}
+                  <div class="cal-image-container" style="background-image: url({{item.image|imageCrop(65)}})"></div>
+                {% else %}
+                  <div class="cal-image-container" style="background-image: url({{cms.sitedata.image|imageCrop(65)}})"></div>
+                {% endif %}
+                <div class="cal-content">
+                  <div class="cal-heading">
+                    <h4 class="cal-heading-el">{{item.name}}</h4>
+                  </div>
+                  <div class="cal-body">
+                    <div class="cal-title">{{item.subhead}}</div>
+                    <div class="cal-date">{{item.publish_date|date('M d Y')}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}

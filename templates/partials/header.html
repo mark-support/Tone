@@ -1,49 +1,61 @@
 <header>
-<nav class="navbar navbar-default navbar-fixed-top main-menu" role="navigation">
-      <div class="container">
-      <div class="navbar-inner inline-block">
-
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toogle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <a class="navbar-left" href="../../..">
-          <img class="logo" typeof="foaf:Image" src="{{cms.sitedata.feature_image|imageSize(180)}}" alt="Tone Madison" />
-        </a>
-
-
-      <div class="navbar-collapse collapse navbar-right">
-        
-         <ul class="nav navbar-nav">
-              <li><a href="/about/">about</a></li>
-              <li><a href="/support/">support</a></li>
-                  </ul>
-                </li>
-            </ul>
-      <!--    <ul class="nav navbar-nav">
-            {% for item in cms.tags|where('name','listen','watch','read','events') %}
-            <li><a href="{{url(item)}}">{{ item.name }}</a></li>
-            {% endfor %}
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">more<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                       {% for item in cms.tags|exclude('name','listen','watch','read','events') %}
-                              <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url(item)}}">{{ item.name }}</a></li>
-                       {% endfor %}
-                </ul>
-              </li>
-          </ul>-->
-        </div><!--/.nav-collapse -->
-        </div>
-        <div class="container-fluid">
-        <div id="NavBar-Rule" class="navbar-nav col-md-6"</div>
-        </div>
+  <div class="header-content" data-search-index="false">
+    <a href="/">
+      <div class="logo">
+        <img src="{{cms.sitedata.feature_image|imageSize(180)}}" alt="Tone Madison" />
       </div>
-</nav>
+    </a>
+    <nav class="desktop">
+      <ul>
+        <li>
+          <form action="/search-results/" class="header-search search-form" method="get" data-search-index="false">
+            <i class="fa fa-search magnifying-glass"></i>
+            <input type="text" placeholder="" id="tipue_search_input" name="q">
+          </form>
 
+
+        </li>
+        {% for item in cms.tags|where('name','listen','watch','read', 'events') %}
+        <li><a href="{{url(item)}}">{{ item.name }}</a></li>
+        {% endfor %}
+<!--
+        <li class="dropdown">
+          <button class="dropdown-toggle" type="button" data-toggle="dropdown">
+            more<i class="fa fa-chevron-down dropdown-chev"></i>
+          </button>
+
+          <ul class="dropdown-menu">
+            {% for item in cms.tags|exclude('name','listen','watch','read', 'events') %}
+                   <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url(item)}}">{{ item.name }}</a></li>
+                   <li role="separator" class="divider"></li>
+            {% endfor %}
+          </ul>
+-->
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+    <nav class="mobile">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle mobile-nav-button" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          More
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          {% for item in cms.tags|where('name','listen','watch','read', 'events') %}
+          <li><a href="{{url(item)}}">{{ item.name }}</a></li>
+          {% endfor %}
+          <li role="separator" class="divider"></li>
+        <!--  <li class="dropdown-header">more</li>
+          {% for item in cms.tags|exclude('name','listen','watch','read', 'events') %}
+                 <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url(item)}}">{{ item.name }}</a></li>
+          {% endfor %}
+        -->
+        </ul>
+      </div>
+    </nav>
+  </div>
 </header>

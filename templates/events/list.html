@@ -1,104 +1,110 @@
-{# ------------------------------------------------------- #}
-
-{# LIST VIEW OF ALL articles #}
-
-{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
-{# http://paularmstrong.github.io/swig/docs/tags/ #}
-
-{# Learn about calling data into Webhook pages here: #}
-{# http://www.webhook.com/docs/template-rules-and-filters/ #}
-
-{# ------------------------------------------------------- #}
-
 {# Confused what extends and blocks do? Watch a primer: #}
-{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{# http://www.webhook.com/help/template-inheritance/ #}
 {% extends "templates/partials/base.html" %}
 
-{# This sets our page <title>. It will append articles to the site title defined in base.html #}
-{% block title %}{% parent %} - events{% endblock %}
+{% block socialsidebar %}
+{% endblock %}
 
 
-  {% set data = cms.articles %}
-
-  {# Next we sort the data by publish_date. The true bit reverses it so it's newest first. Learn more: #}
-  {# http://www.webhook.com/docs/template-rules-and-filters/#sortproperty_reverseorder #}
-  {% set data = data|sort('publish_date', true) %}
+{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
+{% block title %}{% parent %} - Homepage{% endblock %}
 
 
 {% block feature %}
-  {# The first thing we do is call articles data from the CMS. #}
-  {% set data = cms.events|sort('date_time', false)  %}
-  {% set featured = data|slice(0, 4)  %}
 
-  <!-- can I do this? -->
-  {% set data_list = data|exclude(featured, true)  %}
+<!--brings in calendar posts-->
+{% set events = cms.events|sort('publish_date', true)  %}  <!--needs filtering to only include events with images-->
+{% set highlights = cms.weeklycalendarhighlights|sort('publish_date', true)  %} <!-- these pages don't exist yet. -->
+{% set frontpage = merge(articles, highlights) %}
 
-  {# This is how you set pagination. It's always important to do this after your sort. #}
-  {% set data = paginate(data, 15) %}
 
-<div class="col-md-6 col-sm-12 clearfix">
-<article>
-<h1>Upcoming Event Highlights</h1>
-</article>
+<div class="homepage-content-container">
+  <div class="content-area">
+    {% for item in frontpage|slice(0,3) %}
+      <a href="{{ url(item) }}">
+        <div class="article-container-lg">
+          {% if item.banner %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <div class="title-card">{{ item.name }}</div>
+              </div>
+            </div>
+          {% else %}
+            <div class="image-background-container" style="background-image: url({{ item.banner|imageSize(500) }})">
+              <div class="image-background-overlay">
+                <h2 class="title-card">{{ item.name }}</h2>
+              </div>
+            </div>
+          {% endif %}
+          <a href="{{url(item)}}">
+            <h3 class="subheading">{{ item.subhead }}</h3>
+          </a>
+        </div>
+      </a>
+    {% endfor %}
 
-      {% for item in featured %}
-      <article class="col-md-12 col-sm-6 col-xs-12 clearfix">
-          <div class="media">
-            <a class="pull-left" href="{{ url(event) }}">
-              {% if item.image %}
-                <img class="media-object" src="{{ item.image|imageCrop(150)  }}" alt="{{ item.name }}">
-              {% elseif item.artists_event[0] %}
-                <img class="media-object" src="{{ item.artists_event[0].image|imageCrop(150)  }}" alt="{{ item.name }}">
-              {% else %}
-                {# Assuming you made a single item content type called "site data" #}
-                <img class="media-object" src="{{ cms.sitedata.image|imageCrop(150)  }}" alt="{{ item.name }}">
-              {% endif %}
-            </a>
-          <div class="media-body">
-            <h3>{{ item.date_time|date('D, M j @ g:i a') }}</h3>
-            <a href={{ url(item) }}><p>{{ item.name }}</a></br>
-            <h3>{{ item.venue }}</h3></br>
-            <p>{{ item.event_pick|safe }}</p>
+    {% for item in frontpage|slice(3,2) %}
+      <a href="{{url(item)}}">
+        <div class="article-container-sm">
+          {% if item.banner %}
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div>
+          {% else %}
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div>
+          {% endif %}
+          <div class="article-headline-container">
+            <div class="heading">{{item.name}}</div>
+            <div class="body">{{item.subhead}}</div>
           </div>
         </div>
-      </article>
-      {% endfor %}
-</div>
-{% endblock  %}
+      </a>
+    {% endfor %}
+
+    {% block bottom-ad %}
+      <div class="full-width-ad-container">
+        <div class="disclaimer">sponsor</div>
+        {% include "templates/partials/home-ad-bottom.html" %}
+      </div>
+    {% endblock %}
 
 
-{% block capitolLoop %}
 
-<div class="col-md-6 col-sm-12">
 
-{% for item in data %}
-<summary>
-  <div class="media">
-    <a class="pull-left" href="{{ url(event) }}">
-      {% if item.image %}
-        <img class="media-object" src="{{ item.image|imageCrop(65)  }}" alt="{{ item.name }}">
-      {% elseif item.artists_event[0] %}
-        <img class="media-object" src="{{ item.artists_event[0].image|imageCrop(65)  }}" alt="{{ item.name }}">
-      {% else %}
-        {# Assuming you made a single item content type called "site data" #}
-        <img class="media-object" src="{{ cms.sitedata.image|imageCrop(65)  }}" alt="{{ item.name }}">
-      {% endif %}
-    </a>
-  <div class="media-body">
-    <strong>{{ item.date_time|date('D, M j @ g:i a') }}</strong>
-    <a href={{ url(item) }}><p>{{ item.name }}</a></br>
-    <strong>{{ item.venue }}</strong></br>
+
+  </div>
+
+  {% set updates = cms.updates|sort('publish_date', true) %}
+  <div class="right-rail">
+    {% block eventFeed %}
+      <div class="right-rail-widget">
+        <h4 class="heading">Calendar</h4>
+        {% set eventFeed = cms.events|sort('date_time', false) %} <!--needs filtering to section tag-->
+        <div class="widget-body">
+          {% for item in eventFeed|slice(0, 16) %}
+            <a href="{{item.website}}">
+              <div class="cal-event-container">
+                {% if item.image %}
+                  <div class="cal-image-container" style="background-image: url({{item.image|imageCrop(65)}})"></div>
+                {% elseif item.artists_event[0] %}
+                  <div class="cal-image-container" style="background-image: url({{item.artists_event[0].image|imageCrop(65)}})"></div>
+                {% else %}
+                  <div class="cal-image-container" style="background-image: url({{cms.sitedata.image|imageCrop(65)}})"></div>
+                {% endif %}
+                <div class="cal-content">
+                  <div class="cal-heading">
+                    <h4 class="cal-heading-el">{{item.venue}}</h4>
+                  </div>
+                  <div class="cal-body">
+                    <div class="cal-title">{{item.name}}</div>
+                    <div class="cal-date">{{item.date_time|date('D, M j @ g:i a')}}</div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endblock %}
   </div>
 </div>
-</summary>
 
-{% endfor %}
-
-{% block paginate %}
-{# The actual pagination template, feel free to edit or replace the default one. #}
-{% include "templates/partials/paginator.html" %}
-{% endblock  %}
-</div>
-
-</div>
-{% endblock  %}
+{% endblock %}
