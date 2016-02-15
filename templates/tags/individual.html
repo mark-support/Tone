@@ -6,22 +6,20 @@
 {% endblock %}
 
 
-{# This sets our page <title>. It will append "- Homepage" to the site title defined in base. #}
-{% block title %}{% parent %} - Homepage{% endblock %}
+{# This sets our page <title>. It will append "- <TAG NAME>" to the site title defined in base. #}
+{% block title %}{% parent %} - {{ item.name }}{% endblock %}
 
 
 {% block feature %}
 
 <!--Feature Story Feed-->
-{% set articles = cms.articles|sort('publish_date', true)  %}  <!--needs filtering to section tag-->
-<!--brings in calendar posts-->
-{% set highlights = cms.weeklycalendarhighlights|sort('publish_date', true)  %}
-{% set frontpage = merge(articles, highlights) %}
 
+{% set ArticleArchive = item.articles|sort('publish_date', true)  %}
+{% set articles = paginate(ArticleArchive, 20) %}
 
 <div class="homepage-content-container" data-search-index="false">
   <div class="content-area">
-    {% for item in frontpage|slice(0,3) %}
+    {% for item in articles|slice(0,3) %}
       <a href="{{ url(item) }}">
         <div class="article-container-lg">
           {% if item.banner %}
@@ -44,7 +42,7 @@
       </a>
     {% endfor %}
 
-    {% for item in frontpage|slice(3,2) %}
+    {% for item in articles|slice(3,2) %}
       <a href="{{url(item)}}">
         <div class="article-container-sm">
           {% if item.banner %}
@@ -68,35 +66,31 @@
     {% endblock %}
 
 
-
+{% include "templates/partials/paginator.html" %}
 
 
   </div>
 
-  {% set updates = cms.updates|sort('publish_date', true) %}
   <div class="right-rail">
     {% block eventFeed %}
       <div class="right-rail-widget">
-        <h4 class="heading">Calendar</h4>
-        {% set eventFeed = cms.events|sort('date_time', false) %} <!--needs filtering to section tag-->
+        <h4 class="heading">Backlog</h4>
         <div class="widget-body">
-          {% for item in eventFeed|slice(0, 16) %}
-            <a href="{{item.website}}">
+          {% for item in articles|slice(3, 20) %}
+            <a href="{{ url(item) }}">
               <div class="cal-event-container">
-                {% if item.image %}
+                {% if item.banner %}
                   <div class="cal-image-container" style="background-image: url({{item.image|imageCrop(65)}})"></div>
-                {% elseif item.artists_event[0] %}
-                  <div class="cal-image-container" style="background-image: url({{item.artists_event[0].image|imageCrop(65)}})"></div>
                 {% else %}
                   <div class="cal-image-container" style="background-image: url({{cms.sitedata.image|imageCrop(65)}})"></div>
                 {% endif %}
                 <div class="cal-content">
                   <div class="cal-heading">
-                    <h4 class="cal-heading-el">{{item.venue}}</h4>
+                    <h4 class="cal-heading-el">{{item.name}}</h4>
                   </div>
                   <div class="cal-body">
                     <div class="cal-title">{{item.name}}</div>
-                    <div class="cal-date">{{item.date_time|date('D, M j @ g:i a')}}</div>
+                    <div class="cal-date">{{item.publish_date|date('M d Y')}}</div>
                   </div>
                 </div>
               </div>
@@ -107,5 +101,4 @@
     {% endblock %}
   </div>
 </div>
-
 {% endblock %}
