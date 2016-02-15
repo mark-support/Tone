@@ -58,15 +58,14 @@
       </a>
     {% endfor %}
 
+    {% include "templates/partials/paginator.html" %}
+
     {% block bottom-ad %}
       <div class="full-width-ad-container">
         <div class="disclaimer">sponsor</div>
         {% include "templates/partials/home-ad-bottom.html" %}
       </div>
     {% endblock %}
-
-
-{% include "templates/partials/paginator.html" %}
 
 
   </div>
@@ -89,7 +88,7 @@
                     <h4 class="cal-heading-el">{{item.name}}</h4>
                   </div>
                   <div class="cal-body">
-                    <div class="cal-title">{{item.name}}</div>
+                    <div class="cal-title">{{item.subhead}}</div>
                     <div class="cal-date">{{item.publish_date|date('M d Y')}}</div>
                   </div>
                 </div>
