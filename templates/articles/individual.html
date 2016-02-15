@@ -60,9 +60,8 @@
           {{ relation.name }}
         </h5>
         {% if relation.twitter %}
-          <a href="https://twitter.com/{{ relation.twitter }}" class="byline-link"> @{{ relation.twitter }}</a>
+          <a href="https://twitter.com/{{ relation.twitter }}" class="byline-link"> @{{ relation.twitter }}     </a>
         {% endif %}
-      <br>
       {% endfor %}
 
       <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
