@@ -18,11 +18,12 @@
         {% for item in cms.tags|where('name','listen','watch','read', 'events') %}
         <li><a href="{{url(item)}}">{{ item.name }}</a></li>
         {% endfor %}
+<!--
         <li class="dropdown">
           <button class="dropdown-toggle" type="button" data-toggle="dropdown">
             more<i class="fa fa-chevron-down dropdown-chev"></i>
           </button>
-<!--
+
           <ul class="dropdown-menu">
             {% for item in cms.tags|exclude('name','listen','watch','read', 'events') %}
                    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{url(item)}}">{{ item.name }}</a></li>
