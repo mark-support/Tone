@@ -52,17 +52,17 @@
           <a href="{{url(item)}}">
             <h3 class="subheading">{{ item.subhead }}</h3>
           </a>
-        </div> 
+        </div>
       </a>
-    {% endfor %} 
+    {% endfor %}
 
     {% for item in frontpage|slice(3,2) %}
       <a href="{{url(item)}}">
         <div class="article-container-sm">
           {% if item.banner %}
-            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div> 
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(400)}})"></div>
           {% else %}
-            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div> 
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(400)}})"></div>
           {% endif %}
           <div class="article-headline-container">
             <div class="heading">{{item.name}}</div>
@@ -73,19 +73,16 @@
     {% endfor %}
 
     {% block bottom-ad %}
-      <div class="full-width-ad-container">
-        <div class="disclaimer">sponsor</div>
-        {% include "templates/partials/home-ad-bottom.html" %}
-      </div>
+    <div class="disclaimer">sponsors</div>
+    <div class="ad-row">
+      {% include "templates/partials/home-ad-top.html" %}
+      {% include "templates/partials/home-ad-bottom.html" %}  
+    </div>
     {% endblock %}
 
-
-
-
-
   </div>
-  
-  {% set updates = cms.updates|sort('publish_date', true) %} 
+
+  {% set updates = cms.updates|sort('publish_date', true) %}
   <div class="right-rail">
     {% block capitolLoop %}
       <div class="right-rail-widget">
@@ -96,17 +93,17 @@
               <div class="num-circle-container">{{ forloop.index }}</div>
               <div class="widget-content">
                 {% if item.story %}
-                  <a href="{{ url(item.story) }}">{{ item.update_text }}</a>
+                  <a href="{{ url(item.story) }}" target="_blank">{{ item.update_text }}</a>
                 {% elseif item.spotlight_events %}
                   <a href="{{ url(item.spotlight_events)}}">{{ item.update_text }}</a>
                 {% else %}
                   <a href="{{ item.url }}">{{ item.update_text }}</a>
-                {% endif %} 
+                {% endif %}
               </div>
             </div>
           {% endfor %}
         </div>
-      </div> 
+      </div>
     {% endblock %}
 
     {% block eventFeed %}
@@ -115,7 +112,7 @@
         {% set eventFeed = cms.events|sort('date_time', false) %}
         <div class="widget-body">
           {% for item in eventFeed|slice(0, 8) %}
-            <a href="{{item.website}}">
+            <a href="{{item.website}}" target="_blank" >
               <div class="cal-event-container">
                 {% if item.image %}
                   <div class="cal-image-container" style="background-image: url({{item.image|imageCrop(65)}})"></div>
@@ -137,7 +134,7 @@
             </a>
           {% endfor %}
         </div>
-      </div> 
+      </div>
     {% endblock %}
   </div>
 </div>
