@@ -15,7 +15,7 @@
 <!--Feature Story Feed-->
 
 {% set ArticleArchive = item.articles|sort('publish_date', true)  %}
-{% set articles = paginate(ArticleArchive, 20) %}
+{% set articles = paginate(ArticleArchive, 16) %}
 
 <div class="homepage-content-container" data-search-index="false">
   <div class="content-area">
@@ -75,7 +75,7 @@
       <div class="right-rail-widget">
         <h4 class="heading">Backlog</h4>
         <div class="widget-body">
-          {% for item in articles|slice(3, 20) %}
+          {% for item in articles|slice(3, 16) %}
             <a href="{{ url(item) }}">
               <div class="cal-event-container">
                 {% if item.banner %}
