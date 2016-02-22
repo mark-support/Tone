@@ -65,7 +65,13 @@ body {
 }
 
 .relation-type {
-  margin-top: 50px;
+  margin-top: 20px;
+  display: inline-block;
+  padding: 1px 6px;
+  font-size: 9px; 
+  color: white;
+  background-color: darkgray;
+  border-radius: 4px;
 }
 
 .full-width-bios-row {
@@ -376,7 +382,6 @@ header{
 }
 
 .header-content > a:link, a:visited {
-  color: #4A4A4A;
   text-decoration: none;
 }
 
@@ -444,9 +449,6 @@ article > p {
 }
 
 article > p > em {
-  font-family: georgia;
-  font-size: 0.8em;
-  color: #777;
 }
 
 strong {
@@ -597,6 +599,17 @@ line-height: 15px;
   font-weight: 400;
   line-height: 14px;
   color: #4A4A4A;
+}
+
+.author-divider {
+  font-size: 20px;
+  font-weight: 900;
+  color: #E05038;
+  margin: 0 6px;
+}
+
+.author-divider:last-child {
+  visibility: hidden;
 }
 
 .dates{
@@ -963,7 +976,7 @@ font-family: 'LeagueGothic-Regular';
 .ad-body {
   background-color: #FDFDFD;
   border: 1px solid #CACACA;
-  height: 140px;
+  height: 190px;
   padding: 10px;
   overflow: hidden;
 }
@@ -1314,7 +1327,6 @@ a:hover {
   }
 
 }
-
 
 @media only screen 
   and (max-width: 481px) {

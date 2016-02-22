@@ -11,6 +11,7 @@ searchBar.on('click', function (event) {
 body.on('click', function (event) {
   if (event.target !== searchBar) {
     searchBar.removeClass('expanded');
+    searchInput.val('');
     searchInput.blur();
   }
 })

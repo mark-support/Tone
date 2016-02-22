@@ -80,3 +80,5 @@ static/css/loading.gif
 static/css/mediaelementplayer.css
 static/css/mejs-skins.css
 static/css/skel.css
+
+node_modules/
