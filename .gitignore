@@ -4,6 +4,7 @@ package.json
 .build/**
 options/**
 tasks/**
+node_modules/**
 
 **.sw*
 
@@ -81,4 +82,3 @@ static/css/mediaelementplayer.css
 static/css/mejs-skins.css
 static/css/skel.css
 
-node_modules/
