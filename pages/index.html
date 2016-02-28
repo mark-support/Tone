@@ -60,9 +60,9 @@
       <a href="{{url(item)}}">
         <div class="article-container-sm">
           {% if item.banner %}
-            <div class="image-container" style="background-image: url({{item.banner|imageSize(500)}})"></div> 
+            <div class="image-container" style="background-image: url({{item.banner|imageSize(500)}})"></div>
           {% else %}
-            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(500)}})"></div> 
+            <div class="image-container" style="background-image: url({{cms.sitedata.feature_image|imageSize(500)}})"></div>
           {% endif %}
           <div class="article-headline-container">
             <div class="heading">{{item.name}}</div>
@@ -72,13 +72,21 @@
       </a>
     {% endfor %}
 
-    {% block bottom-ad %}
-    <br>
-    <div class="disclaimer">sponsors</div>
-      {% include "templates/partials/home-ad-top.html" %}
+
+    {% block ads %}
+
+    {% set displayads = cms.adinventory.ads|slice(0,2) %}
+          <br>
+          <div class="disclaimer">sponsors</div>
+          <div class="ad-row">
+    {% for item in displayads %}
+          {% include "templates/partials/ads.html" %}
+    {% endfor %}
+          </div>
     {% endblock %}
 
   </div>
+
 
   {% set updates = cms.updates|sort('publish_date', true) %}
   <div class="right-rail">
@@ -134,14 +142,6 @@
         </div>
       </div>
     {% endblock %}
-    {% block bottom-ad %}
-
-    <br>
-    <div class="disclaimer">sponsors</div>
-      {% include "templates/partials/home-ad-bottom.html" %}
-    {% endblock %}
-
-  </div>
 </div>
 
 {% endblock %}

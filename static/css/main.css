@@ -68,7 +68,7 @@ body {
   margin-top: 20px;
   display: inline-block;
   padding: 1px 6px;
-  font-size: 9px; 
+  font-size: 9px;
   color: white;
   background-color: darkgray;
   border-radius: 4px;
@@ -134,7 +134,7 @@ body {
   font: 0.8em/120% 'Roboto', sans-serif;
   font-weight: 500;
   letter-spacing: -0.2px;
-  width: 250px;  
+  width: 250px;
   padding: 4px 8px 4px 45px;
   margin-left: -35px;
 }
@@ -247,7 +247,7 @@ footer{
 }
 
 .mailing-list {
-  text-align: right;  
+  text-align: right;
 }
 
 .mailing-list-title {
@@ -259,7 +259,7 @@ footer{
 }
 
 .mailing-list > form {
-  
+
 }
 
 .mailing-list > form > input[type="text"] {
@@ -336,7 +336,7 @@ header{
   margin-left: 15px;
   font-family: 'Roboto', sans-serif;
   font-size: 0.9em;
-  font-weight: 400; 
+  font-weight: 400;
   letter-spacing: 3px;
 }
 
@@ -390,7 +390,7 @@ header{
   border: none;
   font-family: 'Roboto', sans-serif;
   font-size: 1em;
-  font-weight: 400; 
+  font-weight: 400;
   letter-spacing: 3px;
 }
 
@@ -423,11 +423,11 @@ header{
 }
 
 /* hover state for dropdown */
-.dropdown-menu > 
-li > 
-a:hover, 
-.dropdown-menu > 
-li > 
+.dropdown-menu >
+li >
+a:hover,
+.dropdown-menu >
+li >
 a:focus {
   background-image: none;
 }
@@ -937,6 +937,12 @@ font-family: 'LeagueGothic-Regular';
 
 .ad-container {
   flex: 1;
+  flex-direction: row;
+}
+
+.ad-body {
+  display:flex;
+  flex-direction: row;
 }
 
 .ad-container:nth-child(2) {
@@ -962,13 +968,20 @@ font-family: 'LeagueGothic-Regular';
 }
 
 .ad-image-container {
-  flex: 0 0 54px;
   height: 54px;
-} 
+  order: 1;
+}
+
+.body-content {
+  order: 2;
+  margin: 5px;
+  padding-left: 10px;
+}
+
 
 .ad-image-container > img {
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 54px;
+  min-height: 54px;
   max-width: 100%;
   overflow: hidden;
 }
@@ -979,6 +992,7 @@ font-family: 'LeagueGothic-Regular';
   height: 190px;
   padding: 10px;
   overflow: hidden;
+  flex-direction: row;
 }
 
 .ad-body > .body-heading {
@@ -1071,7 +1085,7 @@ font-family: 'LeagueGothic-Regular';
   font: 1.6em/100% 'Roboto', sans-serif;
   font-weight: 600;
   letter-spacing: -0.5px;
-  padding: 10px 0 0 15px; 
+  padding: 10px 0 0 15px;
 }
 
 .article-container-sm >
@@ -1080,7 +1094,7 @@ font-family: 'LeagueGothic-Regular';
   font: 1.3em/140% Georgia;
   font-weight: 400;
   font-style: italic;
-  padding: 10px 0 0 15px; 
+  padding: 10px 0 0 15px;
 }
 
 .homepage-content-container > .right-rail {
@@ -1097,7 +1111,7 @@ font-family: 'LeagueGothic-Regular';
   display: flex;
   align-items: center;
   justify-content: center;
-  font: 1.2em/100% Georgia; 
+  font: 1.2em/100% Georgia;
   font-weight: 600;
   font-style: italic;
   color: white;
@@ -1161,7 +1175,7 @@ a:hover {
 }
 
 .cal-event-container {
-  position: relative;   
+  position: relative;
 }
 
 .cal-image-container {
@@ -1223,7 +1237,7 @@ a:hover {
   margin-top: 50px;
 }
 
-.full-width-ad-container 
+.full-width-ad-container
 .ad-container {
   padding: 0;
 }
@@ -1241,13 +1255,13 @@ a:hover {
   height: 110px;
 }
 
-.full-width-ad-container 
+.full-width-ad-container
 .ad-heading-text {
   text-align: right;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .ad-image-container {
   position: relative;
   flex: 0 0 85px;
@@ -1258,8 +1272,8 @@ a:hover {
   background-repeat: no-repeat;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .body-heading {
   flex: 1;
   padding: 0 15px 0 25px;
@@ -1269,8 +1283,8 @@ a:hover {
   text-align: center;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .body-content {
   flex: 1;
   padding: 0 15px 0 0;
@@ -1281,7 +1295,7 @@ a:hover {
 
 /* Media Queries */
 
-@media only screen 
+@media only screen
   and (max-width: 960px) {
 
   .header-content {
@@ -1302,7 +1316,7 @@ a:hover {
     display: block
   }
 
-  
+
 
   footer {
     margin-bottom: 45px;
@@ -1328,7 +1342,7 @@ a:hover {
 
 }
 
-@media only screen 
+@media only screen
   and (max-width: 481px) {
 
 .desktop {
@@ -1381,27 +1395,27 @@ a:hover {
   max-width: 115%;
 }
 
-.full-width-ad-container 
+.full-width-ad-container
 .ad-body {
   display: block;
   height: auto;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .ad-image-container {
   display: inline-block;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .body-heading {
   display: inline-block;
   width: 230px;
 }
 
-.full-width-ad-container 
-.ad-body 
+.full-width-ad-container
+.ad-body
 .body-content {
   display: block;
   padding: 20px;

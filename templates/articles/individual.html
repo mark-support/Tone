@@ -118,15 +118,20 @@
       {% endfor %}
       </div>
     {% endblock %}
-    <!-- Ad break -->
 
 
-    <div class="disclaimer">sponsors</div>
-    <div class="ad-row">
-      {% include "templates/partials/article-ad-top.html" %}
-      {% include "templates/partials/article-ad-middle.html" %}
-      {% include "templates/partials/article-ad-bottom.html" %}
-    </div>
+    {% block ads %}
+
+    {% set displayads = cms.adinventory.ads|slice(2,3) %}
+          <br>
+          <div class="disclaimer">sponsors</div>
+          <div class="ad-row">
+    {% for item in displayads %}
+          {% include "templates/partials/ads.html" %}
+    {% endfor %}
+          </div>
+    {% endblock %}
+
 
 
     <!-- Comments -->
