@@ -4,13 +4,8 @@ package.json
 .build/**
 options/**
 tasks/**
-<<<<<<< HEAD
 node_modules/**
 node_modules/
-||||||| merged common ancestors
-=======
-node_modules/**
->>>>>>> master
 
 **.sw*
 
