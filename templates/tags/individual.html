@@ -60,16 +60,18 @@
 
     {% include "templates/partials/paginator.html" %}
 
-    {% block bottom-ad %}
-      <div class="full-width-ad-container">
-        <div class="disclaimer">sponsor</div>
-        {% include "templates/partials/home-ad-bottom.html" %}
-      </div>
+    {% block ads %}
+
+    {% set displayads = cms.adinventory.ads|slice(0,2) %}
+          <br>
+          <div class="disclaimer">sponsors</div>
+          <div class="ad-row">
+    {% for item in displayads %}
+          {% include "templates/partials/ads.html" %}
+    {% endfor %}
+          </div>
     {% endblock %}
-
-
-  </div>
-
+</div>
   <div class="right-rail">
     {% block eventFeed %}
       <div class="right-rail-widget">

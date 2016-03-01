@@ -1,0 +1,75 @@
+{# ------------------------------------------------------- #}
+{# ONE OFF VIEW adinventory #}
+{# This page can use any data from http:localhost:2000/cms/#/form/adinventory/ #}
+{# Webhook uses the SWIG.js (like Djagno/Twig) templating system. Their documentation is here: #}
+{# http://paularmstrong.github.io/swig/docs/tags/ #}
+{# Learn about calling data into Webhook pages here: #}
+{# http://www.webhook.com/docs/template-rules-and-filters/ #}
+{# ------------------------------------------------------- #}
+{# Confused what extends and blocks do? Watch a primer: #}
+{# http://www.webhook.com/docs/template-inheritance-blocks/ #}
+{% extends "templates/partials/base.html" %}
+{% extends "templates/partials/ads.html" %}
+{# This sets our page <title>. It will append this adinventory's name to the site title defined in base.html #}
+{% block title %}{% parent %} - {{ cms.adinventory.name }}{% endblock %}
+{% block content %}
+  <h1>{{ cms.adinventory.name }}</h1>
+
+{% block ads}
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{cms.adinventory.ads[0].link}}?utm_campaign={{cms.adinventory.ads[0].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[0].name}}</a>      </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+        <a href="{{cms.adinventory.ads[0].link}}?utm_campaign={{cms.adinventory.ads[0].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank"><img alt="{{cms.adinventory.ads[0].name}}" src="url({{cms.adinventory.ads[0].image|imageSize(100)}}"></img></a>
+    </div>
+    <div class="body-heading"><a href="{{cms.adinventory.ads[0].link}}?utm_campaign={{cms.adinventory.ads[0].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[0].headline}}</a></div>
+    <div class="body-content">{{cms.adinventory.ads[0].content}}</div>
+  </div>
+</div>
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].name}}</a>      </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+        <a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank"><img alt="{{cms.adinventory.ads[1].name}}" src="url({{cms.adinventory.ads[1].image|imageSize(100)}}"></img></a>
+    </div>
+    <div class="body-heading"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].headline}}</a></div>
+    <div class="body-content">{{cms.adinventory.ads[1].content}}</div>
+  </div>
+</div>
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].name}}</a>      </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+        <a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank"><img alt="{{cms.adinventory.ads[1].name}}" src="url({{cms.adinventory.ads[1].image|imageSize(100)}}"></img></a>
+    </div>
+    <div class="body-heading"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].headline}}</a></div>
+    <div class="body-content">{{cms.adinventory.ads[1].content}}</div>
+  </div>
+</div>
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].name}}</a>      </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+        <a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank"><img alt="{{cms.adinventory.ads[1].name}}" src="url({{cms.adinventory.ads[1].image|imageSize(100)}}"></img></a>
+    </div>
+    <div class="body-heading"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].headline}}</a></div>
+    <div class="body-content">{{cms.adinventory.ads[1].content}}</div>
+  </div>
+</div>
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].name}}</a>      </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+        <a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank"><img alt="{{cms.adinventory.ads[1].name}}" src="url({{cms.adinventory.ads[1].image|imageSize(100)}}"></img></a>
+    </div>
+    <div class="body-heading"><a href="{{cms.adinventory.ads[1].link}}?utm_campaign={{cms.adinventory.ads[1].campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{cms.adinventory.ads[1].headline}}</a></div>
+    <div class="body-content">{{cms.adinventory.ads[1].content}}</div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="ad-container">
+  <div class="ad-heading">
+      <span class="ad-heading-text"><a href="{{item.link}}?utm_campaign={{item.campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{item.name}}</a>
+  </div>
+  <div class="ad-body">
+    <div class="ad-image-container">
+      <img alt="{{item.name}})" src="{{item.image|imageSize(100)}}"></img>
+    </div>
+    <div class="body-content">
+      <p><strong><a href="{{item.link}}?utm_campaign={{item.campaign}}&utm_medium=website&utm_source=tonemadison" target="_blank">{{item.headline}}</a></strong></p>
+      <p>{{item.content}}</p>
+    </div>
+  </div>
+</div>

@@ -28,7 +28,7 @@
     <div class="videoWrapper"> {{item.feature_media.html|safe}}</div>
       {% for relation in item.tags %}
       <a href="{{url(relation)}}">
-      <h3>{{relation.name}}</h3>
+        <h3>{{relation.name}}</h3>
       </a>
       {% endfor %}
       <h1>{{ item.name }}</h1>
@@ -62,7 +62,10 @@
         {% if relation.twitter %}
           <a href="https://twitter.com/{{ relation.twitter }}" class="byline-link"> @{{ relation.twitter }} </a>
         {% endif %}
-        ///
+
+        {% if item.authors.length > 1 && item.authors[forloop.index] !== relation %}
+          <span class="author-divider">/</span>
+        {% endif %}
       {% endfor %}
 
       <h5 class="dates">{{ item.publish_date|date('F d, Y @ g:i a') }}</h5>
@@ -115,15 +118,20 @@
       {% endfor %}
       </div>
     {% endblock %}
-    <!-- Ad break -->
 
 
-    <div class="disclaimer">sponsors</div>
-    <div class="ad-row">
-      {% include "templates/partials/article-ad-top.html" %}
-      {% include "templates/partials/article-ad-middle.html" %}
-      {% include "templates/partials/article-ad-bottom.html" %}
-    </div>
+    {% block ads %}
+
+    {% set displayads = cms.adinventory.ads|slice(2,3) %}
+          <br>
+          <div class="disclaimer">sponsors</div>
+          <div class="ad-row">
+    {% for item in displayads %}
+          {% include "templates/partials/ads.html" %}
+    {% endfor %}
+          </div>
+    {% endblock %}
+
 
 
     <!-- Comments -->
