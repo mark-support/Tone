@@ -5,7 +5,6 @@ package.json
 options/**
 tasks/**
 node_modules/**
-node_modules/
 
 **.sw*
 
@@ -82,3 +81,7 @@ static/css/loading.gif
 static/css/mediaelementplayer.css
 static/css/mejs-skins.css
 static/css/skel.css
+
+node_modules/uslug/node_modules/unorm/lib/unorm.js
+
+node_modules/uglify-js/lib/transform.js
