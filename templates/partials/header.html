@@ -15,20 +15,26 @@
           </form>
         </li>
 
+<!--Social bugs-->
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/{{ cms.sitedata.twitter }}" title="Twitter" Target="_blank"><i class="fa fa-twitter fa-lg"></i></a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.facebook.com/{{ cms.sitedata.facebook_user_name }}/" title="Facebook" Target="_blank"><i class="fa fa-facebook fa-lg"></i></a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.instagram.com/{{ cms.sitedata.instagram }}/" title="Instagram" Target="_blank"><i class="fa fa-instagram fa-lg"></i></a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://soundcloud.com/{{ cms.sitedata.soundcloud }}" title="Soundcloud" Target="_blank"><i class="fa fa-soundcloud fa-lg"></i></a></li>
+
+
+
+
+<!-- navigation driven by tag content type. -->
         {% set nav_tags = cms.tags|sort('publish_date', true) %}
         {% set core_nav = nav_tags|where('name','listen','watch','read', 'news', 'events')  %}
         {% set special_nav = nav_tags|exclude('name','listen','watch','read', 'news', 'events')  %}
-
 
 
         {% for item in core_nav %}
         <li><a href="{{url(item)}}">{{ item.name }}</a></li>
         {% endfor %}
 
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://twitter.com/{{ cms.sitedata.twitter }}" title="Twitter" Target="_blank"><i class="fa fa-twitter"></i></a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.facebook.com/{{ cms.sitedata.facebook_user_name }}/" title="Facebook" Target="_blank"><i class="fa fa-facebook"></i></a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.instagram.com/{{ cms.sitedata.instagram }}/" title="Instagram" Target="_blank"><i class="fa fa-instagram"></i></a></li>
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="https://soundcloud.com/{{ cms.sitedata.soundcloud }}" title="Soundcloud" Target="_blank"><i class="fa fa-soundcloud"></i></a></li>
+<!--test for extended menu items-->
         {% if special_nav[0] %}
         <li class="dropdown">
           <button class="dropdown-toggle" type="button" data-toggle="dropdown">
