@@ -16,7 +16,7 @@
         </li>
 
         {% set nav_tags = cms.tags|sort('publish_date', true) %}
-        {% set core_nav = nav_tags|exclude('name','listen','watch','read', 'news', 'events')  %}
+        {% set core_nav = nav_tags|where('name','listen','watch','read', 'news', 'events')  %}
         {% set special_nav = nav_tags|exclude('name','listen','watch','read', 'news', 'events')  %}
 
 
