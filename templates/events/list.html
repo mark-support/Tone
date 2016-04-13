@@ -13,9 +13,8 @@
 {% block feature %}
 
 <!--brings in calendar posts-->
-{% set events = cms.events|sort('publish_date', true)  %}  <!--needs filtering to only include events with images-->
 {% set highlights = cms.weeklycalendarhighlights|sort('publish_date', true)  %} <!-- these pages don't exist yet. -->
-{% set frontpage = merge(articles, highlights) %}
+{% set frontpage = merge(events, highlights) %}
 
 
 <div class="homepage-content-container">

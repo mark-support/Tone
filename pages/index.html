@@ -56,7 +56,7 @@
       </a>
     {% endfor %}
 
-    {% for item in frontpage|slice(3,2) %}
+    {% for item in frontpage|slice(3,4) %}
       <a href="{{url(item)}}">
         <div class="article-container-sm">
           {% if item.banner %}
@@ -117,7 +117,7 @@
         <h4 class="heading">Calendar</h4>
         {% set eventFeed = cms.events|sort('date_time', false) %}
         <div class="widget-body">
-          {% for item in eventFeed|slice(0, 8) %}
+          {% for item in eventFeed|slice(0, 16) %}
             <a href="{{item.website}}" target="_blank" >
               <div class="cal-event-container">
                 {% if item.image %}
