@@ -117,7 +117,7 @@
         <h4 class="heading">Calendar</h4>
         {% set eventFeed = cms.events|sort('date_time', false) %}
         <div class="widget-body">
-          {% for item in eventFeed|slice(0, 16) %}
+          {% for item in eventFeed|slice(0, 14) %}
             <a href="{{item.website}}" target="_blank" >
               <div class="cal-event-container">
                 {% if item.image %}
