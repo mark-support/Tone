@@ -93,6 +93,7 @@
   <section class="content" id="storyContent">
     <article>
       {{ item.body|safe }}
+      {% include "templates/partials/donate.html" %}
       <p class="dates">last updated: {{ item.last_updated|date('F d, Y @ g:i a') }}</p>
     </article>
 
