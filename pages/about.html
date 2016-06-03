@@ -17,7 +17,6 @@ data into Webhook pages here: #} {# http://www.webhook.com/docs/template-rules-a
 
         <!-- Bios -->
         {% block contextBar %}
-
         <h2> Site Editors </h2>
         <div class="full-width-bios-row">
         {% for relation in cms.sitedata.site_editors %}
@@ -37,7 +36,6 @@ data into Webhook pages here: #} {# http://www.webhook.com/docs/template-rules-a
         {% endfor %}
         </div>
 
-        {% if sitedata.intern %}
         <h2> Intern </h2>
         <div class="full-width-bios-row">
             {% for relation in cms.sitedata.intern %}
@@ -56,7 +54,6 @@ data into Webhook pages here: #} {# http://www.webhook.com/docs/template-rules-a
             </div>
             {% endfor %}
         </div>
-        {% endif %}
 
 
         <h2> Contributors </h2>
