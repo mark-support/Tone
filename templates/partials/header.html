@@ -21,15 +21,6 @@
         <li role="presentation"><a role="menuitem" tabindex="-1" href="https://www.instagram.com/{{ cms.sitedata.instagram }}/" title="Instagram" Target="_blank"><i class="fa fa-instagram fa-lg"></i></a></li>
         <li role="presentation"><a role="menuitem" tabindex="-1" href="https://soundcloud.com/{{ cms.sitedata.soundcloud }}" title="Soundcloud" Target="_blank"><i class="fa fa-soundcloud fa-lg"></i></a></li>
 
-
-
-
-<!-- navigation driven by tag content type. -->
-        {% set nav_tags = cms.tags|sort('publish_date', true) %}
-        {% set core_nav = nav_tags|where('name','listen','watch','read', 'events')  %}
-        {% set special_nav = nav_tags|exclude('name','listen','watch','read','news','events')  %}
-
-
         {% for item in core_nav %}
         <li><a href="{{url(item)}}">{{ item.name }}</a></li>
         {% endfor %}
@@ -42,6 +33,8 @@
           </button>
 
           <ul class="dropdown-menu">
+                    <li><a href="/about/">about this site</a></li>
+                    <hr>
             {% for item in special_nav %}
                    <li><a href="{{url(item)}}">{{ item.name }}</a></li>
             {% endfor %}
