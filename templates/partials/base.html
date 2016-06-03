@@ -69,6 +69,12 @@
     {% block head_extra %}{% endblock %}
   </head>
   <body>
+
+    <!-- navigation driven by tag content type. -->
+            {% set nav_tags = cms.tags|sort('publish_date', true) %}
+            {% set core_nav = nav_tags|where('name','listen','watch','read', 'events')  %}
+            {% set special_nav = nav_tags|exclude('name','listen','watch','read','news','events')  %}
+
     {% block body %}
       <!--[if lt IE 7]>
         <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
