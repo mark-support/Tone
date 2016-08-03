@@ -458,7 +458,7 @@ section {
 }
 
 article{
-  font: 1.2em/170% 'Roboto' sans-serif;
+  font: 1.2em/170%;
   font-weight: 300;
   letter-spacing: -0.2px;
   padding-top: 10px;
