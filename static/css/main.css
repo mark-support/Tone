@@ -34,6 +34,27 @@
     src: url(/static/css/fonts/RobotoSlab-Italic.ttf);
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url(/static/css/fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Italic;
+    src: url(/static/css/fonts/Roboto-Italic.ttf);
+}
+
+@font-face {
+    font-family: Roboto-Bold;
+    src: url(/static/css/fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+    font-family: Roboto-BoldItalic;
+    src: url(/static/css/fonts/Roboto-BoldItalic.ttf);
+}
+
+
 a:link, a:visited {
   color: #0089b2;
   text-decoration: none;
