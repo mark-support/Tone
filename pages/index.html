@@ -75,6 +75,7 @@
     {% block ads %}
 
     {% set displayads = cms.adinventory.ads|slice(0,2) %}
+    {% if displayads[0].name %}
           <br>
           <div class="disclaimer">sponsors</div>
           <div class="ad-row">
@@ -82,6 +83,8 @@
           {% include "templates/partials/ads.html" %}
     {% endfor %}
           </div>
+    {% endif %}
+
     {% endblock %}
 
   </div>
@@ -112,13 +115,16 @@
     {% endblock %}
 
     {% block sideAds %}
+
     {% set sideAd = cms.adinventory.ads|slice(5,1) %}
-      <div class="disclaimer">sponsors</div>
-      <div class="ad-row">
-      {% for item in sideAd %}
-        {% include "templates/partials/ads.html" %}
-      {% endfor %}
-      </div>
+      {% if sideAd.name %}
+        <div class="disclaimer">sponsors</div>
+        <div class="ad-row">
+        {% for item in sideAd %}
+          {% include "templates/partials/ads.html" %}
+        {% endfor %}
+        </div>
+      {% endif %}
     {% endblock %}
 
     {% block eventFeed %}
