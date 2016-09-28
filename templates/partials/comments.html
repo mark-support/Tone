@@ -1,7 +1,7 @@
 {# Only show comments if you've set a disqus username #}
 {% set data = cms.sitedata %}
 
-{% if data.disqus_username %}
+<!--{% if data.disqus_username %}
   <div id="disqus_thread"></div>
 
   <script type="text/javascript">
@@ -14,5 +14,9 @@
       dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
-  </script>
+  </script>-->
+
+<!--Turns on Genius annotation sitewide-->
+<script async src="//genius.codes"></script>
+<p><em> {{data.name}} no longer supports comments because better vehicles for discussing what we write about exist, including <a href="http://twitter.com/{{data.twitter}}">Twitter</a> and <a href="http://facebook.com/{{data.facebook_user_name}}">Facebook</a>. If you have a specific note to make on this story, all pages support <a href="http://genius.com/web-annotator"> Genius annotation.</em></p>   
 {% endif %}
