@@ -117,7 +117,7 @@
     {% block sideAds %}
 
     {% set sideAd = cms.adinventory.ads|slice(5,1) %}
-      {% if sideAd.name %}
+      {% if sideAd[0].name %}
         <div class="disclaimer">sponsors</div>
         <div class="ad-row">
         {% for item in sideAd %}
