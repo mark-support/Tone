@@ -1,6 +1,6 @@
 ## Tone Madison
 
-A bigger, better arts website from Mark Riechers and Scott Gordon.
+A bigger, better arts website from Mark Riechers and Scott Gordon. Site overhaul in 2015 by Alex Sheehan. 
 
 
 
